@@ -6,6 +6,7 @@ use App\Models\Mahasiswa;
 use App\Models\SeminarHasil;
 use App\Models\SeminarProposal;
 use App\Models\SidangSkripsi;
+use App\Models\Ujian;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -16,13 +17,13 @@ class DashboardController extends Controller
         $mahasiswa = Mahasiswa::count();
 
         // ambil data sempro
-        $sempro = SeminarProposal::count();
+        $sempro = Ujian::where('jenis', 'Seminar Proposal')->count();
 
         // ambil data semhas
-        $semhas = SeminarHasil::count();
+        $semhas = Ujian::where('jenis', 'Seminar Hasil')->count();
 
         // ambil data sidang
-        $sidang = SidangSkripsi::count();
+        $sidang = Ujian::where('jenis', 'Sidang Skripsi')->count();
 
         return view('pages.dashboard', [
             'mahasiswa' => $mahasiswa, 'sempro' => $sempro, 'semhas' => $semhas, 'sidang' => $sidang

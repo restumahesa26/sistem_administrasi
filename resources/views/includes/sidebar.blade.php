@@ -98,5 +98,15 @@
             <i class="fa fa-fw fa-map"></i>
             <span>Data Calon Wisudawan</span></a>
     </li>
-    <hr class="sidebar-divider">
+    <hr class="sidebar-divider mb-0">
+    <li class="nav-item @if(Route::is('profile.*')) active @endif">
+        <a class="nav-link" href="{{ route('profile.edit') }}">
+            <i class="fas fa-fw fa-user"></i>
+            <span>Profile</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="javascript:void(0);" data-toggle="modal" data-target="#logoutModal">
+            <i class="fas fa-fw fa-sign-out-alt"></i>
+            <span>Logout</span></a>
+    </li>
 </ul>
