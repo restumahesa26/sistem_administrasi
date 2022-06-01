@@ -41,7 +41,7 @@
                             <tr>
                                 <td>{{ $item->mahasiswa->nama }}</td>
                                 <td>{{ $item->mahasiswa->npm }}</td>
-                                <td>{{ \Carbon\Carbon::parse($item->tanggal_sidang)->translatedFormat('d F Y') }}</td>
+                                <td>{{ \Carbon\Carbon::parse($item->tanggal)->translatedFormat('d F Y') }}</td>
                                 <td>
                                     <a href="{{ route('sidang-skripsi.edit', $item->id) }}" class="btn btn-sm btn-primary">Edit</a>
                                     <form action="{{ route('sidang-skripsi.destroy', $item->id) }}" method="POST" class="d-inline">

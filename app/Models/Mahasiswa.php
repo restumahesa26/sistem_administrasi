@@ -39,16 +39,16 @@ class Mahasiswa extends Model
 
     public function sempro()
     {
-        return $this->hasOne(SeminarProposal::class, 'npm', 'npm');
+        return $this->hasOne(Ujian::class, 'npm', 'npm')->where('jenis', 'Seminar Proposal');
     }
 
     public function semhas()
     {
-        return $this->hasOne(SeminarHasil::class, 'npm', 'npm');
+        return $this->hasOne(Ujian::class, 'npm', 'npm')->where('jenis', 'Seminar Hasil');
     }
 
     public function sidang()
     {
-        return $this->hasOne(SidangSkripsi::class, 'npm', 'npm');
+        return $this->hasOne(Ujian::class, 'npm', 'npm')->where('jenis', 'Sidang Skripsi');
     }
 }

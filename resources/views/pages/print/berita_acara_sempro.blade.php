@@ -36,24 +36,6 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="nip">Dosen</label>
-                        <select name="nip[]" id="nip" class="form-control select2-dosen" multiple="multiple" required>
-                            <option value="" hidden>-- Pilih Dosen --</option>
-                            @foreach ($dosens as $dosen)
-                            <option value="{{ $dosen->nip }}">{{ $dosen->nama }}
-                            </option>
-                            @endforeach
-                        </select>
-                        {{-- @foreach ($dosens as $dosen)
-                        <div class="custom-control custom-checkbox" required>
-                            <input name="nip[]" type="checkbox" class="custom-control-input" id="{{ $dosen->nip }}"
-                                value="{{ $dosen->nip }}">
-                            <label class="custom-control-label" for="{{ $dosen->nip }}">{{ $dosen->nama }} -
-                                {{ $dosen->nip }}</label>
-                        </div>
-                        @endforeach --}}
-                    </div>
-                    <div class="form-group">
                         <label for="nip_ketua_penguji">Ketua Tim Penguji</label>
                         <select name="nip_ketua_penguji" id="nip_ketua_penguji" class="form-control select2-ketua-penguji" required>
                             <option value="" hidden>-- Pilih Ketua Tim Penguji --</option>

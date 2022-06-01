@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DaftarHadir;
 use App\Models\Mahasiswa;
 use App\Models\SeminarProposal;
+use App\Models\Ujian;
 use Illuminate\Http\Request;
 
 class SeminarProposalController extends Controller
@@ -16,7 +18,7 @@ class SeminarProposalController extends Controller
     public function index()
     {
         // ambil semua data sempro urutkan berdasarkan tanggal terbaru
-        $items = SeminarProposal::orderBy('tanggal_sempro', 'DESC')->get();
+        $items = Ujian::where('jenis', 'Seminar Proposal')->orderBy('tanggal', 'DESC')->get();
 
         // tampilkan data tersebut ke halaman index data sempro
         return view('pages.seminar-proposal.index', [
@@ -51,21 +53,22 @@ class SeminarProposalController extends Controller
         // membuat validasi
         $request->validate([
             'npm' => ['required', 'string', 'max:255'],
-            'tanggal_sempro' => ['required', 'date'],
+            'tanggal' => ['required', 'date'],
             'jam' => ['required'],
             'ruang' => ['required', 'string', 'max:255'],
         ]);
 
         // membuat perkondisian apabila data mahasiswa tersebut sudah ada
-        $check = SeminarProposal::where('npm', $request->npm)->first();
+        $check = Ujian::where('jenis', 'Seminar Proposal')->where('npm', $request->npm)->first();
 
         if ($check !== NULL) {
             return redirect()->back()->withInput();
         }else {
             // tambahkan semua data ke model
-            SeminarProposal::create([
+            Ujian::create([
                 'npm' => $request->npm,
-                'tanggal_sempro' => $request->tanggal_sempro,
+                'jenis' => 'Seminar Proposal',
+                'tanggal' => $request->tanggal,
                 'jam' => $request->jam,
                 'ruang' => $request->ruang,
             ]);
@@ -95,7 +98,7 @@ class SeminarProposalController extends Controller
     public function edit($id)
     {
         // ambil data seminar proposal berdasarkan id
-        $item = SeminarProposal::findOrFail($id);
+        $item = Ujian::findOrFail($id);
 
         // ambil semua data mahasiswa
         $mahasiswa = Mahasiswa::all();
@@ -116,7 +119,7 @@ class SeminarProposalController extends Controller
     public function update(Request $request, $id)
     {
         // ambil data seminar proposal berdasarkan id
-        $item = SeminarProposal::findOrFail($id);
+        $item = Ujian::findOrFail($id);
 
         // membuat validasi
         $request->validate([
@@ -127,7 +130,7 @@ class SeminarProposalController extends Controller
         ]);
 
         // membuat perkondisian apabila data mahasiswa tersebut sudah ada
-        $check = SeminarProposal::where('npm', $request->npm)->first();
+        $check = Ujian::where('jenis', 'Seminar Proposal')->where('npm', $request->npm)->first();
 
         if ($item->npm === $request->npm) {
             // update masing-masing data seminar proposal
@@ -162,7 +165,7 @@ class SeminarProposalController extends Controller
     public function destroy($id)
     {
         // ambil data seminar proposal berdasarkan id
-        $item = SeminarProposal::findOrFail($id);
+        $item = Ujian::findOrFail($id);
 
         // lakukan hapus data
         $item->delete();

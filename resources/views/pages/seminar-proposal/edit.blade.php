@@ -44,9 +44,9 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="tanggal_sempro">Tanggal Seminar Proposal</label>
-                        <input type="text" name="tanggal_sempro" id="tanggal_sempro" class="form-control @error('tanggal_sempro') is-invalid @enderror" value="{{ old('tanggal_sempro', $item->tanggal_sempro) }}" placeholder="Masukkan Tanggal Seminar Proposal" readonly>
-                        @error('tanggal_sempro')
+                        <label for="tanggal">Tanggal Seminar Proposal</label>
+                        <input type="text" name="tanggal" id="tanggal" class="form-control @error('tanggal') is-invalid @enderror" value="{{ old('tanggal', $item->tanggal) }}" placeholder="Masukkan Tanggal Seminar Proposal" readonly>
+                        @error('tanggal')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -93,7 +93,7 @@
             placeholder: "-- Pilih Mahasiswa --",
             allowClear: true
         });
-        $('#tanggal_sempro').datepicker({
+        $('#tanggal').datepicker({
             format: 'yyyy/mm/dd',
             todayBtn: 'linked',
             todayHighlight: true,

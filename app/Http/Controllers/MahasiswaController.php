@@ -51,7 +51,7 @@ class MahasiswaController extends Controller
         ]);
 
         // memasukkan data mahasiswa ke model mahasiswa
-        Mahasiswa::create([
+        $item =Mahasiswa::create([
             'npm' => $request->npm,
             'nama' => $request->nama,
             'judul' => $request->judul,

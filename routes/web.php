@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CalonWisudawanController;
+use App\Http\Controllers\DaftarHadirController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\HomeController;
@@ -43,9 +45,13 @@ Route::prefix('/')
 
         Route::resource('seminar-proposal', SeminarProposalController::class);
 
+        Route::resource('daftar-hadir', DaftarHadirController::class);
+
         Route::resource('seminar-hasil', SeminarHasilController::class);
 
         Route::resource('sidang-skripsi', SidangSkripsiController::class);
+
+        Route::resource('calon-wisudawan', CalonWisudawanController::class);
 
         Route::get('/berita-acara-seminar-proposal', [PrintController::class, 'view_berita_acara_sempro'])->name('berita-acara-sempro.view');
 

@@ -6,6 +6,7 @@ use App\Models\Mahasiswa;
 use App\Models\SeminarHasil;
 use App\Models\SeminarProposal;
 use App\Models\SidangSkripsi;
+use App\Models\Ujian;
 use Illuminate\Http\Request;
 
 class SidangSkripsiController extends Controller
@@ -18,7 +19,7 @@ class SidangSkripsiController extends Controller
     public function index()
     {
         // ambil semua data sidang urutkan berdasarkan tanggal terbaru
-        $items = SidangSkripsi::orderBy('tanggal_sidang', 'DESC')->get();
+        $items = Ujian::where('jenis', 'Sidang Skripsi')->orderBy('tanggal', 'DESC')->get();
 
         // tampilkan data tersebut ke halaman index data sidang
         return view('pages.sidang-skripsi.index', [
@@ -53,23 +54,24 @@ class SidangSkripsiController extends Controller
         // membuat validasi
         $request->validate([
             'npm' => ['required', 'string', 'max:255'],
-            'tanggal_sidang' => ['required', 'date'],
+            'tanggal' => ['required', 'date'],
             'jam' => ['required'],
             'ruang' => ['required', 'string', 'max:255'],
         ]);
 
         // membuat perkondisian apabila data mahasiswa tersebut sudah ada
-        $check = SeminarHasil::where('npm', $request->npm)->first();
-        $check2 = SeminarProposal::where('npm', $request->npm)->first();
-        $check3 = SidangSkripsi::where('npm', $request->npm)->first();
+        $check = Ujian::where('jenis', 'Seminar Hasil')->where('npm', $request->npm)->first();
+        $check2 = Ujian::where('jenis', 'Seminar Proposal')->where('npm', $request->npm)->first();
+        $check3 = Ujian::where('jenis', 'Sidang Skripsi')->where('npm', $request->npm)->first();
 
         if ($check === NULL || $check2 === NULL || $check3 !== NULL) {
             return redirect()->back()->withInput();
         }else {
             // tambahkan semua data ke model
-            SidangSkripsi::create([
+            Ujian::create([
                 'npm' => $request->npm,
-                'tanggal_sidang' => $request->tanggal_sidang,
+                'jenis' => 'Sidang Skripsi',
+                'tanggal' => $request->tanggal,
                 'jam' => $request->jam,
                 'ruang' => $request->ruang,
             ]);
@@ -99,7 +101,7 @@ class SidangSkripsiController extends Controller
     public function edit($id)
     {
         // ambil data sidang skripsi berdasarkan id
-        $item = SidangSkripsi::findOrFail($id);
+        $item = Ujian::findOrFail($id);
 
         // ambil semua data mahasiswa
         $mahasiswa = Mahasiswa::all();
@@ -120,28 +122,29 @@ class SidangSkripsiController extends Controller
     public function update(Request $request, $id)
     {
         // ambil data sidang skripsi berdasarkan id
-        $item = SidangSkripsi::findOrFail($id);
+        $item = Ujian::findOrFail($id);
 
         // membuat validasi
         $request->validate([
             'npm' => ['required', 'string', 'max:255'],
-            'tanggal_sidang' => ['required', 'date'],
+            'tanggal' => ['required', 'date'],
             'jam' => ['required'],
             'ruang' => ['required', 'string', 'max:255'],
         ]);
 
         // membuat perkondisian apabila data mahasiswa tersebut sudah ada
-        $check = SeminarHasil::where('npm', $request->npm)->first();
-        $check2 = SeminarProposal::where('npm', $request->npm)->first();
-        $check3 = SidangSkripsi::where('npm', $request->npm)->first();
+        $check = Ujian::where('jenis', 'Seminar Hasil')->where('npm', $request->npm)->first();
+        $check2 = Ujian::where('jenis', 'Seminar Proposal')->where('npm', $request->npm)->first();
+        $check3 = Ujian::where('jenis', 'Sidang Skripsi')->where('npm', $request->npm)->first();
 
         if ($item->npm === $request->npm) {
             // update masing-masing data sidang skripsi
             $item->update([
                 'npm' => $request->npm,
-                'tanggal_sidang' => $request->tanggal_sidang,
+                'tanggal' => $request->tanggal,
                 'jam' => $request->jam,
                 'ruang' => $request->ruang,
+                'nilai' => $request->nilai,
             ]);
         }elseif ($check === NULL || $check2 === NULL || $check3 !== NULL) {
             return redirect()->back()->withInput();
@@ -149,9 +152,10 @@ class SidangSkripsiController extends Controller
             // update masing-masing data sidang skripsi
             $item->update([
                 'npm' => $request->npm,
-                'tanggal_sidang' => $request->tanggal_sidang,
+                'tanggal' => $request->tanggal,
                 'jam' => $request->jam,
                 'ruang' => $request->ruang,
+                'nilai' => $request->nilai,
             ]);
         }
 
@@ -168,7 +172,7 @@ class SidangSkripsiController extends Controller
     public function destroy($id)
     {
         // ambil data sidang skripsi berdasarkan id
-        $item = SidangSkripsi::findOrFail($id);
+        $item = Ujian::findOrFail($id);
 
         // lakukan hapus data
         $item->delete();

@@ -32,7 +32,7 @@
                             <tr>
                                 <th>Nama</th>
                                 <th>NPM</th>
-                                <th>Tanggal Sempro</th>
+                                <th>Tanggal</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -41,7 +41,7 @@
                             <tr>
                                 <td>{{ $item->mahasiswa->nama }}</td>
                                 <td>{{ $item->mahasiswa->npm }}</td>
-                                <td>{{ \Carbon\Carbon::parse($item->tanggal_sempro)->translatedFormat('d F Y') }}</td>
+                                <td>{{ \Carbon\Carbon::parse($item->tanggal)->translatedFormat('d F Y') }}</td>
                                 <td>
                                     <a href="{{ route('seminar-proposal.edit', $item->id) }}" class="btn btn-sm btn-primary">Edit</a>
                                     <form action="{{ route('seminar-proposal.destroy', $item->id) }}" method="POST" class="d-inline">
@@ -49,6 +49,7 @@
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
                                     </form>
+                                    <a href="{{ route('daftar-hadir.show', $item->mahasiswa->npm) }}" class="btn btn-sm btn-info">Daftar Hadir</a>
                                 </td>
                             </tr>
                             @empty

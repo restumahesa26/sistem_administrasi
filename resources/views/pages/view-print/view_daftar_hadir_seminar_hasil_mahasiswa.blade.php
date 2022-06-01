@@ -94,7 +94,7 @@
                 <tr>
                     <td style="width: 20%;">Ruang</td>
                     <td style="width: 1%;">:</td>
-                    <td>{{ $mahasiswa->ruang }}</td>
+                    <td>{{ $data_semhas->ruang }}</td>
                 </tr>
             </tbody>
         </table>

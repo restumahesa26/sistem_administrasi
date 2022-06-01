@@ -31,17 +31,17 @@
             </div>
         </div>
     </li>
-    <li class="nav-item @if(Route::is('seminar-proposal.*') || Route::is('seminar-hasil.*') || Route::is('sidang-skripsi.*')) active @endif">
+    <li class="nav-item @if(Route::is('seminar-proposal.*') || Route::is('seminar-hasil.*') || Route::is('sidang-skripsi.*') || Route::is('daftar-hadir.*')) active @endif">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap2"
             aria-expanded="true" aria-controls="collapseBootstrap">
             <i class="fa fa-fw fa-map"></i>
             <span>Data Seminar</span>
         </a>
-        <div id="collapseBootstrap2" class="collapse @if(Route::is('seminar-proposal.*') || Route::is('seminar-hasil.*') || Route::is('sidang-skripsi.*')) show @endif" aria-labelledby="headingBootstrap"
+        <div id="collapseBootstrap2" class="collapse @if(Route::is('seminar-proposal.*') || Route::is('seminar-hasil.*') || Route::is('sidang-skripsi.*') || Route::is('daftar-hadir.*')) show @endif" aria-labelledby="headingBootstrap"
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Data Seminar</h6>
-                <a class="collapse-item @if(Route::is('seminar-proposal.*')) active @endif" href="{{ route('seminar-proposal.index') }}">Seminar Proposal</a>
+                <a class="collapse-item @if(Route::is('seminar-proposal.*') || Route::is('daftar-hadir.*')) active @endif" href="{{ route('seminar-proposal.index') }}">Seminar Proposal</a>
                 <a class="collapse-item @if(Route::is('seminar-hasil.*')) active @endif" href="{{ route('seminar-hasil.index') }}">Seminar Hasil</a>
                 <a class="collapse-item @if(Route::is('sidang-skripsi.*')) active @endif" href="{{ route('sidang-skripsi.index') }}">Sidang Skripsi</a>
             </div>
@@ -92,6 +92,11 @@
         <a class="nav-link" href="{{ route('laporan-sidang.view') }}">
             <i class="fa fa-fw fa-map"></i>
             <span>Print Laporan Sidang</span></a>
+    </li>
+    <li class="nav-item @if(Route::is('calon-wisudawan.*')) active @endif">
+        <a class="nav-link" href="{{ route('calon-wisudawan.index') }}">
+            <i class="fa fa-fw fa-map"></i>
+            <span>Data Calon Wisudawan</span></a>
     </li>
     <hr class="sidebar-divider">
 </ul>

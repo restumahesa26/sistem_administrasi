@@ -88,17 +88,17 @@
                 <td style="width: 12%; vertical-align: middle;">@if ($item->sempro == NULL)
                     -
                 @else
-                    {{ \Carbon\Carbon::parse($item->sempro->tanggal_sempro)->translatedFormat('l, d F Y') }}
+                    {{ \Carbon\Carbon::parse($item->sempro->tanggal)->translatedFormat('l, d F Y') }}
                 @endif</td>
                 <td style="width: 12%; vertical-align: middle;">@if ($item->semhas == NULL)
                     -
                 @else
-                    {{ \Carbon\Carbon::parse($item->semhas->tanggal_semhas)->translatedFormat('l, d F Y') }}
+                    {{ \Carbon\Carbon::parse($item->semhas->tanggal)->translatedFormat('l, d F Y') }}
                 @endif</td>
                 <td style="width: 12%; vertical-align: middle;">@if ($item->sidang == NULL)
                     -
                 @else
-                    {{ \Carbon\Carbon::parse($item->sidang->tanggal_sidang)->translatedFormat('l, d F Y') }}
+                    {{ \Carbon\Carbon::parse($item->sidang->tanggal)->translatedFormat('l, d F Y') }}
                 @endif</td>
             </tr>
               @empty

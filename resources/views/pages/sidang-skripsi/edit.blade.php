@@ -44,9 +44,9 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="tanggal_sidang">Tanggal Sidang Skripsi</label>
-                        <input type="text" name="tanggal_sidang" id="tanggal_sidang" class="form-control @error('tanggal_sidang') is-invalid @enderror" value="{{ old('tanggal_sidang', $item->tanggal_sidang) }}" placeholder="Masukkan Tanggal Sidang Skripsi" readonly>
-                        @error('tanggal_sidang')
+                        <label for="tanggal">Tanggal Sidang Skripsi</label>
+                        <input type="text" name="tanggal" id="tanggal" class="form-control @error('tanggal') is-invalid @enderror" value="{{ old('tanggal', $item->tanggal) }}" placeholder="Masukkan Tanggal Sidang Skripsi" readonly>
+                        @error('tanggal')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -65,6 +65,15 @@
                         <label for="ruang">Ruang</label>
                         <input type="text" name="ruang" id="ruang" class="form-control @error('ruang') is-invalid @enderror" value="{{ old('ruang', $item->ruang) }}" placeholder="Masukkan Ruang">
                         @error('ruang')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="nilai">Nilai</label>
+                        <input type="number" name="nilai" id="nilai" class="form-control @error('nilai') is-invalid @enderror" value="{{ old('nilai', $item->nilai) }}" placeholder="Masukkan Nilai" min="0" value="0" step="any">
+                        @error('nilai')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -93,7 +102,7 @@
             placeholder: "-- Pilih Mahasiswa --",
             allowClear: true
         });
-        $('#tanggal_sidang').datepicker({
+        $('#tanggal').datepicker({
             format: 'yyyy/mm/dd',
             todayBtn: 'linked',
             todayHighlight: true,

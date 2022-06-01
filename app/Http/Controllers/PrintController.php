@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DaftarHadir;
 use App\Models\Dosen;
 use App\Models\Mahasiswa;
 use App\Models\SeminarHasil;
 use App\Models\SeminarProposal;
 use App\Models\SidangSkripsi;
+use App\Models\Ujian;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -25,21 +27,16 @@ class PrintController extends Controller
     public function print_berita_acara_sempro(Request $request)
     {
         $npmMahasiswa = $request->npm;
-        $nipDosen = array();
         $statusKelayakan = $request->status;
         $ketuaPenguji = $request->nip_ketua_penguji;
 
-        $checkMahasiswa = SeminarProposal::where('npm', $npmMahasiswa)->first();
+        $checkMahasiswa = Ujian::where('jenis', 'Seminar Proposal')->where('npm', $npmMahasiswa)->first();
 
         if ($checkMahasiswa !== NULL) {
             $mahasiswa = Mahasiswa::where('npm', $npmMahasiswa)->first();
             $ketuaPenguji = Dosen::where('nip', $ketuaPenguji)->first();
 
-            foreach ($request->nip as $value) {
-                $dosen = Dosen::where('nip', $value)->first();
-
-                $nipDosen[] = $dosen;
-            }
+            $nipDosen = DaftarHadir::where('npm', $npmMahasiswa)->get();
 
             return view('pages.view-print.view_berita_acara_sempro', [
                 'mahasiswa' => $mahasiswa, 'dosens' => $nipDosen, 'kelayakan' => $statusKelayakan, 'ketua_penguji' => $ketuaPenguji, 'data_sempro' => $checkMahasiswa
@@ -66,8 +63,8 @@ class PrintController extends Controller
         $koordinator = $request->nip_koordinator;
         $now = Carbon::now();
 
-        $checkMahasiswa = SeminarHasil::where('npm', $npmMahasiswa)->first();
-        $checkMahasiswa2 = SeminarProposal::where('npm', $npmMahasiswa)->first();
+        $checkMahasiswa = Ujian::where('jenis', 'Seminar Hasil')->where('npm', $npmMahasiswa)->first();
+        $checkMahasiswa2 = Ujian::where('jenis', 'Seminar Proposal')->where('npm', $npmMahasiswa)->first();
 
         if ($checkMahasiswa !== NULL && $checkMahasiswa2 !== NULL) {
             $mahasiswa = Mahasiswa::where('npm', $npmMahasiswa)->first();
@@ -99,9 +96,9 @@ class PrintController extends Controller
         $koordinator = $request->nip_koordinator;
         $now = Carbon::now();
 
-        $checkMahasiswa = SeminarHasil::where('npm', $npmMahasiswa)->first();
-        $checkMahasiswa2 = SeminarProposal::where('npm', $npmMahasiswa)->first();
-        $checkMahasiswa3 = SidangSkripsi::where('npm', $npmMahasiswa)->first();
+        $checkMahasiswa = Ujian::where('jenis', 'Seminar Hasil')->where('npm', $npmMahasiswa)->first();
+        $checkMahasiswa2 = Ujian::where('jenis', 'Seminar Proposal')->where('npm', $npmMahasiswa)->first();
+        $checkMahasiswa3 = Ujian::where('jenis', 'Sidang Skripsi')->where('npm', $npmMahasiswa)->first();
 
         if ($checkMahasiswa !== NULL && $checkMahasiswa2 !== NULL && $checkMahasiswa3 !== NULL) {
             $mahasiswa = Mahasiswa::where('npm', $npmMahasiswa)->first();
@@ -129,8 +126,8 @@ class PrintController extends Controller
     {
         $npmMahasiswa = $request->npm;
 
-        $checkMahasiswa = SeminarHasil::where('npm', $npmMahasiswa)->first();
-        $checkMahasiswa2 = SeminarProposal::where('npm', $npmMahasiswa)->first();
+        $checkMahasiswa = Ujian::where('jenis', 'Seminar Hasil')->where('npm', $npmMahasiswa)->first();
+        $checkMahasiswa2 = Ujian::where('jenis', 'Seminar Proposal')->where('npm', $npmMahasiswa)->first();
 
         if ($checkMahasiswa !== NULL && $checkMahasiswa2 !== NULL) {
             $mahasiswa = Mahasiswa::where('npm', $npmMahasiswa)->first();
@@ -139,7 +136,7 @@ class PrintController extends Controller
                 'mahasiswa' => $mahasiswa, 'data_semhas' => $checkMahasiswa
             ]);
         }else {
-            return redirect()->back()->withInput();
+            return redirect()->back()->withInput()->with('error', 'Mahasiswa Belum Terdaftar Di Seminar Hasil');
         }
     }
 
@@ -157,8 +154,8 @@ class PrintController extends Controller
         $npmMahasiswa = $request->npm;
         $number = $request->number;
 
-        $checkMahasiswa = SeminarHasil::where('npm', $npmMahasiswa)->first();
-        $checkMahasiswa2 = SeminarProposal::where('npm', $npmMahasiswa)->first();
+        $checkMahasiswa = Ujian::where('jenis', 'Seminar Hasil')->where('npm', $npmMahasiswa)->first();
+        $checkMahasiswa2 = Ujian::where('jenis', 'Seminar Proposal')->where('npm', $npmMahasiswa)->first();
 
         if ($checkMahasiswa !== NULL && $checkMahasiswa2 !== NULL) {
             $mahasiswa = Mahasiswa::where('npm', $npmMahasiswa)->first();
@@ -167,7 +164,7 @@ class PrintController extends Controller
                 'mahasiswa' => $mahasiswa, 'data_semhas' => $checkMahasiswa, 'number' => $number
             ]);
         }else {
-            return redirect()->back()->withInput();
+            return redirect()->back()->withInput()->with('error', 'Mahasiswa Belum Terdaftar Di Seminar Hasil');
         }
     }
 
@@ -187,9 +184,9 @@ class PrintController extends Controller
         $nomorSurat = $request->nomor_surat;
         $koordinator = $request->nip_koordinator;
 
-        $checkMahasiswa = SeminarHasil::where('npm', $npmMahasiswa)->first();
-        $checkMahasiswa2 = SeminarProposal::where('npm', $npmMahasiswa)->first();
-        $checkMahasiswa3 = SidangSkripsi::where('npm', $npmMahasiswa)->first();
+        $checkMahasiswa = Ujian::where('jenis', 'Seminar Hasil')->where('npm', $npmMahasiswa)->first();
+        $checkMahasiswa2 = Ujian::where('jenis', 'Seminar Proposal')->where('npm', $npmMahasiswa)->first();
+        $checkMahasiswa3 = Ujian::where('jenis', 'Sidang Skripsi')->where('npm', $npmMahasiswa)->first();
 
         if ($checkMahasiswa !== NULL && $checkMahasiswa2 !== NULL && $checkMahasiswa3 !== NULL) {
             $mahasiswa = Mahasiswa::where('npm', $npmMahasiswa)->first();
@@ -199,7 +196,7 @@ class PrintController extends Controller
                 'mahasiswa' => $mahasiswa, 'data_sidang' => $checkMahasiswa3, 'nomor_surat' => $nomorSurat, 'koordinator' => $koordinator
             ]);
         }else {
-            return redirect()->back()->withInput();
+            return redirect()->back()->withInput()->with('error', 'Mahasiswa Belum Terdaftar Di Sidang Skripsi');
         }
     }
 
@@ -216,9 +213,9 @@ class PrintController extends Controller
     {
         $npmMahasiswa = $request->npm;
 
-        $checkMahasiswa = SeminarHasil::where('npm', $npmMahasiswa)->first();
-        $checkMahasiswa2 = SeminarProposal::where('npm', $npmMahasiswa)->first();
-        $checkMahasiswa3 = SidangSkripsi::where('npm', $npmMahasiswa)->first();
+        $checkMahasiswa = Ujian::where('jenis', 'Seminar Hasil')->where('npm', $npmMahasiswa)->first();
+        $checkMahasiswa2 = Ujian::where('jenis', 'Seminar Proposal')->where('npm', $npmMahasiswa)->first();
+        $checkMahasiswa3 = Ujian::where('jenis', 'Sidang Skripsi')->where('npm', $npmMahasiswa)->first();
 
         if ($checkMahasiswa !== NULL && $checkMahasiswa2 !== NULL && $checkMahasiswa3 !== NULL) {
             $mahasiswa = Mahasiswa::where('npm', $npmMahasiswa)->first();
@@ -227,7 +224,7 @@ class PrintController extends Controller
                 'mahasiswa' => $mahasiswa, 'data_sidang' => $checkMahasiswa3,
             ]);
         }else {
-            return redirect()->back()->withInput();
+            return redirect()->back()->withInput()->with('error', 'Mahasiswa Belum Terdaftar Di Sidang Skripsi');
         }
     }
 

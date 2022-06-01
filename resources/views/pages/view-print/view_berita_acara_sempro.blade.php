@@ -107,8 +107,8 @@
                 @foreach ($dosens as $dosen)
                 <tr>
                     <td class="text-center">{{ $loop->iteration }}.</td>
-                    <td>{{ $dosen->nama }}</td>
-                    <td>{{ $dosen->nip }}</td>
+                    <td>{{ $dosen->dosen->nama }}</td>
+                    <td>{{ $dosen->dosen->nip }}</td>
                     <td></td>
                 </tr>
                 @endforeach
