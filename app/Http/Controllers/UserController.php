@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 
@@ -150,8 +151,12 @@ class UserController extends Controller
         // ambil data user berdasarkan npm
         $item = User::findOrFail($id);
 
-        // lakukan proses hapus data
-        $item->delete();
+        if (Auth::user()->id == $id) {
+            return redirect()->back()->with('error', 'Tidak Bisa Menghapus User Yang Sedang Aktif');
+        }else {
+            // lakukan proses hapus data
+            $item->delete();
+        }
 
         // kembalikan ke halaman index data user
         return redirect()->route('data-user.index')->with('success', 'Berhasil Menghapus Data User');

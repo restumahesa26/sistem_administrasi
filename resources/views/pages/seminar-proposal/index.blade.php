@@ -44,7 +44,7 @@
                                 <td>{{ \Carbon\Carbon::parse($item->tanggal)->translatedFormat('d F Y') }}</td>
                                 <td>
                                     <a href="{{ route('seminar-proposal.edit', $item->id) }}" class="btn btn-sm btn-primary">Edit</a>
-                                    <form action="{{ route('seminar-proposal.destroy', $item->id) }}" method="POST" class="d-inline">
+                                    <form action="{{ route('seminar-proposal.destroy', $item->id) }}" method="POST" class="d-inline btn-hapus">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
@@ -66,3 +66,34 @@
     </div>
 </div>
 @endsection
+
+@push('addon-style')
+    <link rel="stylesheet" href="{{ url('css/sweetalert2.min.css') }}">
+@endpush
+
+@push('addon-script')
+    <script src="{{ url('js/sweetalert2.all.min.js') }}"></script>
+    <script>
+        $('.btn-hapus').on('click', function (e) {
+            e.preventDefault(); // prevent form submit
+            var form = event.target.form;
+            Swal.fire({
+            title: 'Hapus Data?',
+            text: "Data Akan Terhapus",
+            icon: 'warning',
+            allowOutsideClick: false,
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Hapus',
+            cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    form.submit();
+                }else {
+                    //
+                }
+            });
+        });
+    </script>
+@endpush

@@ -40,7 +40,7 @@
                         <select name="nip_ketua_penguji" id="nip_ketua_penguji" class="form-control select2-ketua-penguji" required>
                             <option value="" hidden>-- Pilih Ketua Tim Penguji --</option>
                             @foreach ($dosens as $dosen2)
-                            <option value="{{ $dosen2->nip }}">{{ $dosen2->nama }} - {{ $mahasiswa->dosen2 }}
+                            <option value="{{ $dosen2->nip }}">{{ $dosen2->nama }} - {{ $dosen2->nip }}
                             </option>
                             @endforeach
                         </select>

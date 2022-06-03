@@ -15,7 +15,7 @@ class DosenController extends Controller
     public function index()
     {
         // ambil semua data dosen
-        $items = Dosen::all();
+        $items = Dosen::orderBy('program_studi', 'ASC')->get();
 
         // tampilkan data dosen ke halaman index data mahasiswa
         return view('pages.data-dosen.index', [

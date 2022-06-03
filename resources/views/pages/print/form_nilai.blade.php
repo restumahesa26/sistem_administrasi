@@ -35,6 +35,16 @@
                             @endforeach
                         </select>
                     </div>
+                    <div class="form-group">
+                        <label for="untuk">Untuk</label>
+                        <select name="untuk" id="untuk" class="form-control" required>
+                            <option value="" hidden>-- Pilih Untuk --</option>
+                            <option value="Pembimbing 1">Dosen Pembimbing 1</option>
+                            <option value="Pembimbing 2">Dosen Pembimbing 2</option>
+                            <option value="Penguji 1">Dosen Penguji 1</option>
+                            <option value="Penguji 2">Dosen Penguji 2</option>
+                        </select>
+                    </div>
                     <button type="submit" class="btn btn-primary btn-block">Cetak Form Nilai</button>
                 </form>
             </div>

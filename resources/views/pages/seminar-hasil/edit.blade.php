@@ -45,7 +45,7 @@
                     </div>
                     <div class="form-group">
                         <label for="tanggal">Tanggal Seminar Proposal</label>
-                        <input type="text" name="tanggal" id="tanggal" class="form-control @error('tanggal') is-invalid @enderror" value="{{ old('tanggal', $item->tanggal) }}" placeholder="Masukkan Tanggal Seminar Proposal">
+                        <input type="text" name="tanggal" id="tanggal" class="form-control @error('tanggal') is-invalid @enderror" value="{{ old('tanggal', $item->tanggal) }}" placeholder="Masukkan Tanggal Seminar Proposal" autocomplete="off">
                         @error('tanggal')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -54,7 +54,7 @@
                     </div>
                     <div class="form-group">
                         <label for="jam">Jam</label>
-                        <input type="text" name="jam" id="jam" class="form-control @error('jam') is-invalid @enderror" value="{{ old('jam', $item->jam) }}" placeholder="Masukkan Jam">
+                        <input type="text" name="jam" id="jam" class="form-control @error('jam') is-invalid @enderror" value="{{ old('jam', $item->jam) }}" placeholder="Masukkan Jam" autocomplete="off">
                         @error('jam')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -101,6 +101,9 @@
         });
         $('#jam').clockpicker({
             autoclose: true
+        });
+        $('#tanggal, #jam').keypress(function(e) {
+            e.preventDefault();
         });
     </script>
 @endpush

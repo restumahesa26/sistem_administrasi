@@ -226,9 +226,24 @@
         <div class="d-flex justify-content-end mt-5" style="margin-right: 70px;">
             <div class="column">
                 <p>Bengkulu, {{ \Carbon\Carbon::parse(\Carbon\Carbon::now())->translatedFormat('d F Y') }}</p>
-                <p>Penguji Pendamping,</p>
-                <p style="margin-top: 100px;">{{ $mahasiswa->dosen_penguji_2->nama }}</p>
-                <p>NIP. {{ $mahasiswa->dosen_penguji_2->nip }}</p>
+                @if ($untuk == 'Pembimbing 1')
+                    <p>Penguji 1,</p>
+                    <p style="margin-top: 100px;">{{ $mahasiswa->dosen_pembimbing_1->nama }}</p>
+                    <p>NIP. {{ $mahasiswa->dosen_pembimbing_1->nip }}</p>
+                @elseif ($untuk == 'Pembimbing 2')
+                    <p>Penguji 2,</p>
+                    <p style="margin-top: 100px;">{{ $mahasiswa->dosen_pembimbing_2->nama }}</p>
+                    <p>NIP. {{ $mahasiswa->dosen_pembimbing_2->nip }}</p>
+                @elseif ($untuk == 'Penguji 1')
+                    <p>Pembimbing 1,</p>
+                    <p style="margin-top: 100px;">{{ $mahasiswa->dosen_penguji_1->nama }}</p>
+                    <p>NIP. {{ $mahasiswa->dosen_penguji_1->nip }}</p>
+                @elseif ($untuk == 'Penguji 2')
+                    <p>Pembimbing 1,</p>
+                    <p style="margin-top: 100px;">{{ $mahasiswa->dosen_penguji_2->nama }}</p>
+                    <p>NIP. {{ $mahasiswa->dosen_penguji_2->nip }}</p>
+                @endif
+
             </div>
         </div>
     </div>

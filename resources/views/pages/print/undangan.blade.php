@@ -44,7 +44,7 @@
                         <select name="nip_koordinator" id="nip_koordinator" class="form-control select2-koordinator" required>
                             <option value="" hidden>-- Pilih Koordinator --</option>
                             @foreach ($dosens as $dosen3)
-                            <option value="{{ $dosen3->nip }}">{{ $dosen3->nama }} - {{ $mahasiswa->dosen3 }}
+                            <option value="{{ $dosen3->nip }}">{{ $dosen3->nama }} - {{ $dosen3->nip }}
                             </option>
                             @endforeach
                         </select>

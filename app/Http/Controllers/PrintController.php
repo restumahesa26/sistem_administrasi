@@ -221,7 +221,7 @@ class PrintController extends Controller
             $mahasiswa = Mahasiswa::where('npm', $npmMahasiswa)->first();
 
             return view('pages.view-print.view_form_nilai', [
-                'mahasiswa' => $mahasiswa, 'data_sidang' => $checkMahasiswa3,
+                'mahasiswa' => $mahasiswa, 'data_sidang' => $checkMahasiswa3, 'untuk' => $request->untuk
             ]);
         }else {
             return redirect()->back()->withInput()->with('error', 'Mahasiswa Belum Terdaftar Di Sidang Skripsi');

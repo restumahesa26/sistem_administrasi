@@ -16,7 +16,7 @@ class MahasiswaController extends Controller
     public function index()
     {
         // ambil semua data mahasiswa
-        $items = Mahasiswa::all();
+        $items = Mahasiswa::latest()->get();
 
         // tampilkan data mahasiswa ke halaman index data mahasiswa
         return view('pages.data-mahasiswa.index', [

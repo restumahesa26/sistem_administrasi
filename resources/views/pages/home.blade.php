@@ -65,9 +65,6 @@
           </li>
           @else
           <li>
-            <a class="getstarted scrollto" href="{{ route('register') }}">Register</a>
-          </li>
-          <li>
             <a class="getstarted scrollto" href="{{ route('login') }}">Login</a>
           </li>
           @endif
