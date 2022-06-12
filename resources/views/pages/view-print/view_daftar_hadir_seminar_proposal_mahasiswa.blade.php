@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daftar Hadir Seminar Hasil Mahasiswa</title>
+    <title>Daftar Hadir Seminar Proposal Mahasiswa</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <style>
         body {
@@ -58,12 +58,12 @@
         </div>
         <hr style="border: 2px solid #000; margin-top: -6px;">
         <h5 class="text-center font-weight-bold" style="text-decoration: underline; font-size: 24px;">
-            SEMINAR HASIL SKRIPSI
+            SEMINAR PROPOSAL SKRIPSI
         </h5>
         <h5 class="text-center font-weight-bold" style="font-size: 20px; margin-top: -10px;">
             DAFTAR HADIR MAHASISWA
         </h5>
-        <p class="mt-4">Pada hari ini {{ \Carbon\Carbon::parse($data_semhas->tanggal)->translatedFormat('l') }} tanggal {{ \Carbon\Carbon::parse($data_semhas->tanggal)->translatedFormat('d') }} bulan {{ \Carbon\Carbon::parse($data_semhas->tanggal)->translatedFormat('F') }} tahun {{ \Carbon\Carbon::parse($data_semhas->tanggal)->translatedFormat('Y') }} pukul {{ \Carbon\Carbon::parse($data_semhas->jam)->translatedFormat('H.i') }} WIB, telah dilaksanakan Seminar Hasil Proposal Skripsi mahasiswa :</p>
+        <p class="mt-4">Pada hari ini {{ \Carbon\Carbon::parse($data_sempro->tanggal)->translatedFormat('l') }} tanggal {{ \Carbon\Carbon::parse($data_sempro->tanggal)->translatedFormat('d') }} bulan {{ \Carbon\Carbon::parse($data_sempro->tanggal)->translatedFormat('F') }} tahun {{ \Carbon\Carbon::parse($data_sempro->tanggal)->translatedFormat('Y') }} pukul {{ \Carbon\Carbon::parse($data_sempro->jam)->translatedFormat('H.i') }} WIB, telah dilaksanakan Seminar Proposal Skripsi mahasiswa :</p>
         <table class="table table-borderless mt-3">
             <tbody>
                 <tr>
@@ -89,12 +89,12 @@
                 <tr>
                     <td style="width: 20%;">Hari, Tanggal</td>
                     <td style="width: 1%;">:</td>
-                    <td>{{ \Carbon\Carbon::parse($data_semhas->tanggal)->translatedFormat('l, d F Y') }}</td>
+                    <td>{{ \Carbon\Carbon::parse($data_sempro->tanggal)->translatedFormat('l, d F Y') }}</td>
                 </tr>
                 <tr>
                     <td style="width: 20%;">Ruang</td>
                     <td style="width: 1%;">:</td>
-                    <td>{{ $data_semhas->ruang }}</td>
+                    <td>{{ $data_sempro->ruang }}</td>
                 </tr>
             </tbody>
         </table>

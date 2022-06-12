@@ -63,7 +63,7 @@
         <h5 class="text-center font-weight-bold" style="font-size: 20px; margin-top: -10px;">
             BERITA ACARA
         </h5>
-        <p class="mt-4">Pada hari ini {{ \Carbon\Carbon::parse($data_sidang->tanggal_sidang)->translatedFormat('l') }} tanggal {{ \Carbon\Carbon::parse($data_sidang->tanggal_sidang)->translatedFormat('d') }} bulan {{ \Carbon\Carbon::parse($data_sidang->tanggal_sidang)->translatedFormat('F') }} tahun {{ \Carbon\Carbon::parse($data_sidang->tanggal_sidang)->translatedFormat('Y') }} pukul {{ \Carbon\Carbon::parse($data_sidang->jam)->translatedFormat('H.i') }} WIB, telah dilaksanakan Seminar Hasil Proposal Skripsi mahasiswa :</p>
+        <p class="mt-4">Pada hari ini {{ \Carbon\Carbon::parse($data_sidang->tanggal)->translatedFormat('l') }} tanggal {{ \Carbon\Carbon::parse($data_sidang->tanggal)->translatedFormat('d') }} bulan {{ \Carbon\Carbon::parse($data_sidang->tanggal)->translatedFormat('F') }} tahun <span style="text-transform: capitalize">{{ Riskihajar\Terbilang\Facades\Terbilang::make(\Carbon\Carbon::parse($data_sidang->tanggal)->translatedFormat('Y')) }}</span>  pukul {{ \Carbon\Carbon::parse($data_sidang->jam)->translatedFormat('H.i') }} WIB, telah dilaksanakan Seminar Hasil Proposal Skripsi mahasiswa :</p>
         <table class="table table-borderless ml-4 mt-3">
             <tbody>
                 <tr>
@@ -97,13 +97,44 @@
                     <td>{{ $mahasiswa->dosen_pembimbing_2->nama }}</td>
                 </tr>
                 <tr>
-                    <td style="width: 25%;">Dengan Penguji</td>
+                    <td style="width: 25%;">Ketua Penguji</td>
                     <td style="width: 1%;">:</td>
-                    <td></td>
+                    <td>{{ $mahasiswa->dosen_penguji_1->nama }}</td>
+                </tr>
+                <tr>
+                    <td style="width: 25%;">Penguji</td>
+                    <td style="width: 1%;">:</td>
+                    <td>{{ $mahasiswa->dosen_penguji_2->nama }}</td>
                 </tr>
             </tbody>
         </table>
-        <table class="table table-bordered mt-4">
+        <p class="mt-2 text-justify">Berdasarkan hasil sidang yang dilaksanakan pada hari ini, mahasiswa yang namanya tersebut di atas dinyatakan
+            @if ($status === 'Lulus')
+                LAYAK / <strike>TIDAK LAYAK</strike> / <strike>TINJAU ULANG</strike>
+            @elseif ($status === 'Tidak Lulus')
+                <strike>LAYAK</strike>  / TIDAK LAYAK / <strike>TINJAU ULANG</strike>
+            @elseif ($status === 'Tinjau Ulang')
+                <strike>LAYAK</strike>  / <strike>TIDAK LAYAK</strike> / TINJAU ULANG
+            @endif Sidang Skripsi dengan nilai</p>
+        <p class="mt-2 font-weight-bold text-center">
+            @if ($data_sidang->nilai === 'A')
+            A / <strike>A-</strike> / <strike>B+</strike> / <strike>B</strike> / <strike>B-</strike> / <strike>C+</strike> / <strike>C</strike>
+            @elseif ($data_sidang->nilai === 'A-')
+            <strike>A</strike> / A- / <strike>B+</strike> / <strike>B</strike> / <strike>B-</strike> / <strike>C+</strike> / <strike>C</strike>
+            @elseif ($data_sidang->nilai === 'B+')
+            <strike>A</strike> / <strike>A-</strike> / B+ / <strike>B</strike> / <strike>B-</strike> / <strike>C+</strike> / <strike>C</strike>
+            @elseif ($data_sidang->nilai === 'B')
+            <strike>A</strike> / <strike>A-</strike> / <strike>B+</strike> / B / <strike>B-</strike> / <strike>C+</strike> / <strike>C</strike>
+            @elseif ($data_sidang->nilai === 'B-')
+            <strike>A</strike> / <strike>A-</strike> / <strike>B+</strike> / <strike>B</strike> / B- / <strike>C+</strike> / <strike>C</strike>
+            @elseif ($data_sidang->nilai === 'C+')
+            <strike>A</strike> / <strike>A-</strike> / <strike>B+</strike> / <strike>B</strike> / <strike>B-</strike> / C+ / <strike>C</strike>
+            @elseif ($data_sidang->nilai === 'C')
+            <strike>A</strike> / <strike>A-</strike> / <strike>B+</strike> / <strike>B</strike> / <strike>B-</strike> / <strike>C+</strike> / C
+            @endif
+        </p>
+        <p class="mt-2">Demikian berita acara ini dibuat dengan sebenarnya untuk digunakan sebagaimana mestinya.</p>
+        <table class="table table-bordered mt-3">
             <thead>
                 <tr class="text-center">
                     <th>No.</th>
@@ -143,11 +174,11 @@
             <div class="column">
                 <p>Mengetahui,</p>
                 <p>Koordinator,</p>
-                <p style="margin-top: 100px;">{{ $koordinator->nama }}</p>
-                <p>NIP. {{ $koordinator->nip }}</p>
+                <p style="margin-top: 100px;">Aan Erlansari, S.T., M.Eng.</p>
+                <p>NIP. 198112222008011011</p>
             </div>
             <div class="column">
-                <p>Bengkulu, {{ \Carbon\Carbon::parse($now)->translatedFormat('d F Y') }}</p>
+                <p>Bengkulu, {{ \Carbon\Carbon::parse($data_sidang->tanggal)->translatedFormat('d F Y') }}</p>
                 <p>Ketua Tim Penguji,</p>
                 <p style="margin-top: 100px;">{{ $ketua_penguji->nama }}</p>
                 <p>NIP. {{ $ketua_penguji->nip }}</p>

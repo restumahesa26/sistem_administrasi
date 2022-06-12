@@ -37,16 +37,6 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="nip_koordinator">Koordinator</label>
-                        <select name="nip_koordinator" id="nip_koordinator" class="form-control select2-koordinator" required>
-                            <option value="" hidden>-- Pilih Koordinator --</option>
-                            @foreach ($dosens as $dosen3)
-                            <option value="{{ $dosen3->nip }}">{{ $dosen3->nama }} - {{ $dosen3->nip }}
-                            </option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="form-group">
                         <label for="nip_ketua_penguji">Ketua Tim Penguji</label>
                         <select name="nip_ketua_penguji" id="nip_ketua_penguji" class="form-control select2-ketua-penguji" required>
                             <option value="" hidden>-- Pilih Ketua Tim Penguji --</option>
@@ -55,6 +45,21 @@
                             </option>
                             @endforeach
                         </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Status Kelulusan</label>
+                        <div class="custom-control custom-radio" required>
+                            <input type="radio" id="customRadio3" name="status" class="custom-control-input" value="Lulus">
+                            <label class="custom-control-label" for="customRadio3">Lulus</label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input type="radio" id="customRadio4" name="status" class="custom-control-input" value="Tidak Lulus">
+                            <label class="custom-control-label" for="customRadio4">Tidak Lulus</label>
+                        </div>
+                        <div class="custom-control custom-radio" required>
+                            <input type="radio" id="customRadio5" name="status" class="custom-control-input" value="Jadwal Ulang">
+                            <label class="custom-control-label" for="customRadio5">Jadwal Ulang</label>
+                        </div>
                     </div>
                     <button type="submit" class="btn btn-primary btn-block">Cetak Berita Acara</button>
                 </form>

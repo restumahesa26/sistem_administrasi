@@ -37,16 +37,6 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="nip_koordinator">Koordinator</label>
-                        <select name="nip_koordinator" id="nip_koordinator" class="form-control select2-koordinator" required>
-                            <option value="" hidden>-- Pilih Koordinator --</option>
-                            @foreach ($dosens as $dosen3)
-                            <option value="{{ $dosen3->nip }}">{{ $dosen3->nama }} - {{ $dosen3->nip }}
-                            </option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="form-group">
                         <label for="nip_ketua_penguji">Ketua Tim Penguji</label>
                         <select name="nip_ketua_penguji" id="nip_ketua_penguji" class="form-control select2-ketua-penguji" required>
                             <option value="" hidden>-- Pilih Ketua Tim Penguji --</option>

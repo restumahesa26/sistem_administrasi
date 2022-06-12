@@ -73,6 +73,14 @@ Route::prefix('/')
 
         Route::get('/daftar-hadir-seminar-hasil-mahasiswa/print', [PrintController::class, 'print_daftar_hadir_seminar_hasil_mahasiswa'])->name('daftar-hadir-seminar-hasil-mahasiswa.print');
 
+        Route::get('/daftar-hadir-seminar-proposal-dosen', [PrintController::class, 'view_daftar_hadir_seminar_proposal_dosen'])->name('daftar-hadir-seminar-proposal-dosen.view');
+
+        Route::get('/daftar-hadir-seminar-proposal-dosen/print', [PrintController::class, 'print_daftar_hadir_seminar_proposal_dosen'])->name('daftar-hadir-seminar-proposal-dosen.print');
+
+        Route::get('/daftar-hadir-seminar-proposal-mahasiswa', [PrintController::class, 'view_daftar_hadir_seminar_proposal_mahasiswa'])->name('daftar-hadir-seminar-proposal-mahasiswa.view');
+
+        Route::get('/daftar-hadir-seminar-proposal-mahasiswa/print', [PrintController::class, 'print_daftar_hadir_seminar_proposal_mahasiswa'])->name('daftar-hadir-seminar-proposal-mahasiswa.print');
+
         Route::get('/undangan-ujian-sidang-skripsi', [PrintController::class, 'view_undangan'])->name('undangan.view');
 
         Route::get('/undangan-ujian-sidang-skripsi/print', [PrintController::class, 'print_undangan'])->name('undangan.print');

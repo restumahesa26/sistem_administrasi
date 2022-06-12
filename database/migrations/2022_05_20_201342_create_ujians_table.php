@@ -21,7 +21,7 @@ class CreateUjiansTable extends Migration
             $table->date('tanggal');
             $table->time('jam');
             $table->string('ruang');
-            $table->integer('nilai')->nullable();
+            $table->string('nilai')->nullable();
             $table->timestamps();
         });
     }

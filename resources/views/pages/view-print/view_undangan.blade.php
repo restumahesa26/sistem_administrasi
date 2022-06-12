@@ -142,7 +142,7 @@
                 <tr>
                     <td style="width: 20%;">Hari, Tanggal</td>
                     <td style="width: 1%;">:</td>
-                    <td>{{ \Carbon\Carbon::parse($data_sidang->tanggal_sidang)->translatedFormat('l, d F Y') }}</td>
+                    <td>{{ \Carbon\Carbon::parse($data_sidang->tanggal)->translatedFormat('l, d F Y') }}</td>
                 </tr>
                 <tr>
                     <td style="width: 20%;">Pukul</td>
@@ -161,8 +161,8 @@
         <div class="d-flex justify-content-end mt-5" style="margin-right: 70px;">
             <div class="column">
                 <p>Koordinator,</p>
-                <p style="margin-top: 100px;">{{ $koordinator->nama }}</p>
-                <p>NIP. {{ $koordinator->nip }}</p>
+                <p style="margin-top: 100px;">Aan Erlansari, S.T., M.Eng.</p>
+                <p>NIP. 198112222008011011</p>
             </div>
         </div>
         <table class="table table-borderless mt-5">

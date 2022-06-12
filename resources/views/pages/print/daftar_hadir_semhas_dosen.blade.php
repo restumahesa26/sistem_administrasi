@@ -35,6 +35,10 @@
                             @endforeach
                         </select>
                     </div>
+                    <div class="form-group">
+                        <label for="number">Jumlah Dosen</label>
+                        <input type="number" name="number" id="number" class="form-control" placeholder="Masukkan Jumlah Dosen" required>
+                    </div>
                     <button type="submit" class="btn btn-primary btn-block">Cetak Daftar Hadir</button>
                 </form>
             </div>

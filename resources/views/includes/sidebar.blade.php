@@ -51,15 +51,30 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap3"
             aria-expanded="true" aria-controls="collapseBootstrap">
             <i class="fa fa-fw fa-map"></i>
-            <span>Print Berita Acara</span>
+            <span>Berita Acara</span>
         </a>
         <div id="collapseBootstrap3" class="collapse @if(Route::is('berita-acara-sempro.*') || Route::is('berita-acara-semhas.*') || Route::is('berita-acara-sidang-skripsi.*')) show @endif" aria-labelledby="headingBootstrap"
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Print Berita Acara</h6>
+                <h6 class="collapse-header">Berita Acara</h6>
                 <a class="collapse-item @if(Route::is('berita-acara-sempro.*')) active @endif" href="{{ route('berita-acara-sempro.view') }}">Seminar Proposal</a>
                 <a class="collapse-item @if(Route::is('berita-acara-semhas.*')) active @endif" href="{{ route('berita-acara-semhas.view') }}">Seminar Hasil</a>
                 <a class="collapse-item @if(Route::is('berita-acara-sidang-skripsi.*')) active @endif" href="{{ route('berita-acara-sidang-skripsi.view') }}">Sidang Skripsi</a>
+            </div>
+        </div>
+    </li>
+    <li class="nav-item @if(Route::is('daftar-hadir-seminar-proposal-mahasiswa.*') || Route::is('daftar-hadir-seminar-proposal-dosen.*')) active @endif">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap5"
+            aria-expanded="true" aria-controls="collapseBootstrap">
+            <i class="fa fa-fw fa-map"></i>
+            <span>Daftar Hadir SemPro</span>
+        </a>
+        <div id="collapseBootstrap5" class="collapse @if(Route::is('daftar-hadir-seminar-proposal-mahasiswa.*') || Route::is('daftar-hadir-seminar-proposal-dosen.*')) show @endif" aria-labelledby="headingBootstrap"
+            data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Daftar Hadir SemPro</h6>
+                <a class="collapse-item @if(Route::is('daftar-hadir-seminar-proposal-mahasiswa.*')) active @endif" href="{{ route('daftar-hadir-seminar-proposal-mahasiswa.view') }}">Mahasiswa</a>
+                <a class="collapse-item @if(Route::is('daftar-hadir-seminar-proposal-dosen.*')) active @endif" href="{{ route('daftar-hadir-seminar-proposal-dosen.view') }}">Dosen</a>
             </div>
         </div>
     </li>
@@ -67,12 +82,12 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap4"
             aria-expanded="true" aria-controls="collapseBootstrap">
             <i class="fa fa-fw fa-map"></i>
-            <span>Print Daftar Hadir</span>
+            <span>Daftar Hadir SemHas</span>
         </a>
         <div id="collapseBootstrap4" class="collapse @if(Route::is('daftar-hadir-seminar-hasil-mahasiswa.*') || Route::is('daftar-hadir-seminar-hasil-dosen.*')) show @endif" aria-labelledby="headingBootstrap"
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Print Daftar Hadir</h6>
+                <h6 class="collapse-header">Daftar Hadir SemHas</h6>
                 <a class="collapse-item @if(Route::is('daftar-hadir-seminar-hasil-mahasiswa.*')) active @endif" href="{{ route('daftar-hadir-seminar-hasil-mahasiswa.view') }}">Mahasiswa</a>
                 <a class="collapse-item @if(Route::is('daftar-hadir-seminar-hasil-dosen.*')) active @endif" href="{{ route('daftar-hadir-seminar-hasil-dosen.view') }}">Dosen</a>
             </div>
@@ -81,17 +96,17 @@
     <li class="nav-item @if(Route::is('undangan.*')) active @endif">
         <a class="nav-link" href="{{ route('undangan.view') }}">
             <i class="fa fa-fw fa-map"></i>
-            <span>Print Undangan</span></a>
+            <span>Undangan</span></a>
     </li>
     <li class="nav-item @if(Route::is('form-nilai.*')) active @endif">
         <a class="nav-link" href="{{ route('form-nilai.view') }}">
             <i class="fa fa-fw fa-map"></i>
-            <span>Print Form Nilai</span></a>
+            <span>Form Nilai</span></a>
     </li>
     <li class="nav-item @if(Route::is('laporan-sidang.*')) active @endif">
         <a class="nav-link" href="{{ route('laporan-sidang.view') }}">
             <i class="fa fa-fw fa-map"></i>
-            <span>Print Laporan Sidang</span></a>
+            <span>Laporan Sidang</span></a>
     </li>
     <li class="nav-item @if(Route::is('calon-wisudawan.*')) active @endif">
         <a class="nav-link" href="{{ route('calon-wisudawan.index') }}">

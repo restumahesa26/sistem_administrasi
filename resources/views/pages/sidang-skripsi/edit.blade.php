@@ -72,7 +72,16 @@
                     </div>
                     <div class="form-group">
                         <label for="nilai">Nilai</label>
-                        <input type="number" name="nilai" id="nilai" class="form-control @error('nilai') is-invalid @enderror" value="{{ old('nilai', $item->nilai) }}" placeholder="Masukkan Nilai" min="0" value="0" step="any">
+                        <select name="nilai" id="nilai" class="form-control @error('nilai') is-invalid @enderror">
+                            <option value="" hidden>-- Pilih Nilai --</option>
+                            <option value="A">A</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B">B</option>
+                            <option value="B-">B-</option>
+                            <option value="C+">C+</option>
+                            <option value="C">C</option>
+                        </select>
                         @error('nilai')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>

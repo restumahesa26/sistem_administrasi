@@ -63,7 +63,7 @@
         <h5 class="text-center font-weight-bold" style="font-size: 20px; margin-top: -10px;">
             BERITA ACARA
         </h5>
-        <p class="mt-4">Pada hari ini {{ \Carbon\Carbon::parse($data_semhas->tanggal_semhas)->translatedFormat('l') }} tanggal {{ \Carbon\Carbon::parse($data_semhas->tanggal_semhas)->translatedFormat('d') }} bulan {{ \Carbon\Carbon::parse($data_semhas->tanggal_semhas)->translatedFormat('F') }} tahun {{ \Carbon\Carbon::parse($data_semhas->tanggal_semhas)->translatedFormat('Y') }} pukul {{ \Carbon\Carbon::parse($data_semhas->jam)->translatedFormat('H.i') }} WIB, telah dilaksanakan Seminar Hasil Proposal Skripsi mahasiswa :</p>
+        <p class="mt-4">Pada hari ini {{ \Carbon\Carbon::parse($data_semhas->tanggal)->translatedFormat('l') }} tanggal {{ \Carbon\Carbon::parse($data_semhas->tanggal)->translatedFormat('d') }} bulan {{ \Carbon\Carbon::parse($data_semhas->tanggal)->translatedFormat('F') }} tahun {{ \Carbon\Carbon::parse($data_semhas->tanggal)->translatedFormat('Y') }} pukul {{ \Carbon\Carbon::parse($data_semhas->jam)->translatedFormat('H.i') }} WIB, telah dilaksanakan Seminar Hasil Proposal Skripsi mahasiswa :</p>
         <table class="table table-borderless ml-4 mt-3">
             <tbody>
                 <tr>
@@ -144,11 +144,11 @@
                 <p>&nbsp;</p>
                 <p>&nbsp;</p>
                 <p>Koordinator,</p>
-                <p style="margin-top: 100px;">{{ $koordinator->nama }}</p>
-                <p>NIP. {{ $koordinator->nip }}</p>
+                <p style="margin-top: 100px;">Aan Erlansari, S.T., M.Eng.</p>
+                <p>NIP. 198112222008011011</p>
             </div>
             <div class="column">
-                <p>Bengkulu, {{ \Carbon\Carbon::parse($now)->translatedFormat('d F Y') }}</p>
+                <p>Bengkulu, {{ \Carbon\Carbon::parse($data_semhas->tanggal)->translatedFormat('d F Y') }}</p>
                 <p>Mengetahui,</p>
                 <p>Ketua Tim Penguji,</p>
                 <p style="margin-top: 100px;">{{ $ketua_penguji->nama }}</p>

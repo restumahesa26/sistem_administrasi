@@ -75,7 +75,7 @@
                 <tr>
                     <td>Hari, Tgl</td>
                     <td class="text-center">:</td>
-                    <td>{{ \Carbon\Carbon::parse($data_sidang->tanggal_sidang)->translatedFormat('l, d F Y') }}</td>
+                    <td>{{ \Carbon\Carbon::parse($data_sidang->tanggal)->translatedFormat('l, d F Y') }}</td>
                 </tr>
                 <tr>
                     <td>Waktu</td>
@@ -225,21 +225,21 @@
         <p style="margin-top: -12px;">Catatan : Nilai diisi dengan angka 0 - 100</p>
         <div class="d-flex justify-content-end mt-5" style="margin-right: 70px;">
             <div class="column">
-                <p>Bengkulu, {{ \Carbon\Carbon::parse(\Carbon\Carbon::now())->translatedFormat('d F Y') }}</p>
+                <p>Bengkulu, {{ \Carbon\Carbon::parse($data_sidang->tanggal)->translatedFormat('d F Y') }}</p>
                 @if ($untuk == 'Pembimbing 1')
-                    <p>Penguji 1,</p>
+                    <p>Pembimbing Utama,</p>
                     <p style="margin-top: 100px;">{{ $mahasiswa->dosen_pembimbing_1->nama }}</p>
                     <p>NIP. {{ $mahasiswa->dosen_pembimbing_1->nip }}</p>
                 @elseif ($untuk == 'Pembimbing 2')
-                    <p>Penguji 2,</p>
+                    <p>Pembimbing Pendamping,</p>
                     <p style="margin-top: 100px;">{{ $mahasiswa->dosen_pembimbing_2->nama }}</p>
                     <p>NIP. {{ $mahasiswa->dosen_pembimbing_2->nip }}</p>
                 @elseif ($untuk == 'Penguji 1')
-                    <p>Pembimbing 1,</p>
+                    <p>Penguji Utama,</p>
                     <p style="margin-top: 100px;">{{ $mahasiswa->dosen_penguji_1->nama }}</p>
                     <p>NIP. {{ $mahasiswa->dosen_penguji_1->nip }}</p>
                 @elseif ($untuk == 'Penguji 2')
-                    <p>Pembimbing 1,</p>
+                    <p>Penguji Pendamping,</p>
                     <p style="margin-top: 100px;">{{ $mahasiswa->dosen_penguji_2->nama }}</p>
                     <p>NIP. {{ $mahasiswa->dosen_penguji_2->nip }}</p>
                 @endif

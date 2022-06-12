@@ -64,7 +64,7 @@
         <h5 class="text-center font-weight-bold" style="font-size: 20px; margin-top: -10px;">
             BERITA ACARA
         </h5>
-        <p class="mt-4">Pada hari ini {{ \Carbon\Carbon::parse($data_sempro->tanggal_sempro)->translatedFormat('l') }} tanggal {{ \Carbon\Carbon::parse($data_sempro->tanggal_sempro)->translatedFormat('d') }} bulan {{ \Carbon\Carbon::parse($data_sempro->tanggal_sempro)->translatedFormat('F') }} tahun {{ \Carbon\Carbon::parse($data_sempro->tanggal_sempro)->translatedFormat('Y') }}, telah dilaksanakan Seminar Proposal Skripsi mahasiswa :</p>
+        <p class="mt-4">Pada hari ini {{ \Carbon\Carbon::parse($data_sempro->tanggal)->translatedFormat('l') }} tanggal {{ \Carbon\Carbon::parse($data_sempro->tanggal)->translatedFormat('d') }} bulan {{ \Carbon\Carbon::parse($data_sempro->tanggal)->translatedFormat('F') }} tahun {{ \Carbon\Carbon::parse($data_sempro->tanggal)->translatedFormat('Y') }}, telah dilaksanakan Seminar Proposal Skripsi mahasiswa :</p>
         <table class="table table-borderless ml-4 mt-3">
             <tbody>
                 <tr>

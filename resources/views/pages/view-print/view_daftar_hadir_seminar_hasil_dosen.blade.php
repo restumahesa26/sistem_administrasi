@@ -37,7 +37,7 @@
         }
 
         table tr td {
-            padding: 20px !important;
+            padding: 5px !important;
         }
     </style>
 </head>
@@ -63,7 +63,7 @@
         <h5 class="text-center font-weight-bold" style="font-size: 20px; margin-top: -10px;">
             DAFTAR HADIR DOSEN
         </h5>
-        <p class="mt-4">Pada hari ini {{ \Carbon\Carbon::parse($data_semhas->tanggal_semhas)->translatedFormat('l') }} tanggal {{ \Carbon\Carbon::parse($data_semhas->tanggal_semhas)->translatedFormat('d') }} bulan {{ \Carbon\Carbon::parse($data_semhas->tanggal_semhas)->translatedFormat('F') }} tahun {{ \Carbon\Carbon::parse($data_semhas->tanggal_semhas)->translatedFormat('Y') }} pukul {{ \Carbon\Carbon::parse($data_semhas->jam)->translatedFormat('H.i') }} WIB, telah dilaksanakan Seminar Hasil Proposal Skripsi mahasiswa :</p>
+        <p class="mt-4">Pada hari ini {{ \Carbon\Carbon::parse($data_semhas->tanggal)->translatedFormat('l') }} tanggal {{ \Carbon\Carbon::parse($data_semhas->tanggal)->translatedFormat('d') }} bulan {{ \Carbon\Carbon::parse($data_semhas->tanggal)->translatedFormat('F') }} tahun {{ \Carbon\Carbon::parse($data_semhas->tanggal)->translatedFormat('Y') }} pukul {{ \Carbon\Carbon::parse($data_semhas->jam)->translatedFormat('H.i') }} WIB, telah dilaksanakan Seminar Hasil Proposal Skripsi mahasiswa :</p>
         <table class="table table-borderless mt-3">
             <tbody>
                 <tr>
@@ -109,30 +109,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td class="text-center">1.</td>
-                        <td>{{ $mahasiswa->dosen_pembimbing_1->nip }}</td>
-                        <td>{{ $mahasiswa->dosen_pembimbing_1->nama }}</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td class="text-center">2.</td>
-                        <td>{{ $mahasiswa->dosen_pembimbing_2->nip }}</td>
-                        <td>{{ $mahasiswa->dosen_pembimbing_2->nama }}</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td class="text-center">3.</td>
-                        <td>{{ $mahasiswa->dosen_penguji_1->nip }}</td>
-                        <td>{{ $mahasiswa->dosen_penguji_1->nama }}</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td class="text-center">4.</td>
-                        <td>{{ $mahasiswa->dosen_penguji_2->nip }}</td>
-                        <td>{{ $mahasiswa->dosen_penguji_2->nama }}</td>
-                        <td></td>
-                    </tr>
+                    @for ($i=0; $i < $number; $i++)
+                <tr>
+                    <td class="text-center">{{ $i+1 }}.</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                @endfor
                 </tbody>
             </table>
         </div>
