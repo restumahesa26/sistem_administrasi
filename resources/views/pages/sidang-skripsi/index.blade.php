@@ -42,10 +42,10 @@
                             <tr>
                                 <td>{{ $item->mahasiswa->nama }}</td>
                                 <td>{{ $item->mahasiswa->npm }}</td>
-                                <td>{{ \Carbon\Carbon::parse($item->tanggal)->translatedFormat('d F Y') }}</td>
+                                <td>{{ \Carbon\Carbon::parse($item->tanggal)->translatedFormat('l, d F Y') }}</td>
                                 <td>{{ $item->nilai != NULL ? $item->nilai : '-' }}</td>
                                 <td>
-                                    <a href="{{ route('sidang-skripsi.edit', $item->id) }}" class="btn btn-sm btn-primary">Edit</a>
+                                    <a href="{{ route('sidang-skripsi.edit', $item->id) }}" class="btn btn-sm btn-primary">Ubah</a>
                                     <form action="{{ route('sidang-skripsi.destroy', $item->id) }}" method="POST" class="d-inline btn-hapus">
                                         @csrf
                                         @method('DELETE')

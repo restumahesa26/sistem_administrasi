@@ -6,10 +6,10 @@
 
 @section('content')
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Print Berita Acara Seminar Hasil</h1>
+    <h1 class="h3 mb-0 text-gray-800">Cetak Berita Acara Seminar Hasil</h1>
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Print Berita Acara Seminar Hasil</li>
+        <li class="breadcrumb-item active" aria-current="page">Cetak Berita Acara Seminar Hasil</li>
     </ol>
 </div>
 
@@ -27,21 +27,11 @@
             <div class="card-body">
                 <form action="{{ route('berita-acara-semhas.print') }}" method="GET" target="_blank">
                     <div class="form-group">
-                        <label for="npm">Mahasiswa</label>
+                        <label for="npm">Nama Mahasiswa</label>
                         <select name="npm" id="npm" class="form-control select2-mahasiswa" required>
                             <option value="" hidden>-- Pilih Mahasiswa --</option>
                             @foreach ($mahasiswas as $mahasiswa)
                             <option value="{{ $mahasiswa->npm }}">{{ $mahasiswa->nama }} - {{ $mahasiswa->npm }}
-                            </option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="nip_ketua_penguji">Ketua Tim Penguji</label>
-                        <select name="nip_ketua_penguji" id="nip_ketua_penguji" class="form-control select2-ketua-penguji" required>
-                            <option value="" hidden>-- Pilih Ketua Tim Penguji --</option>
-                            @foreach ($dosens as $dosen2)
-                            <option value="{{ $dosen2->nip }}">{{ $dosen2->nama }} - {{ $dosen2->nip }}
                             </option>
                             @endforeach
                         </select>

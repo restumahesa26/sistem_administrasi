@@ -43,7 +43,7 @@
                                 <td>{{ $item->nip }}</td>
                                 <td>{{ $item->program_studi }}</td>
                                 <td>
-                                    <a href="{{ route('data-dosen.edit', $item->nip) }}" class="btn btn-sm btn-primary">Edit</a>
+                                    <a href="{{ route('data-dosen.edit', $item->nip) }}" class="btn btn-sm btn-primary">Ubah</a>
                                     <form action="{{ route('data-dosen.destroy', $item->nip) }}" method="POST" class="d-inline btn-hapus">
                                         @csrf
                                         @method('DELETE')

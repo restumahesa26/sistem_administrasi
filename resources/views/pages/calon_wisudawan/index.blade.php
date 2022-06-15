@@ -52,7 +52,7 @@
                                 </td>
                                 <td>
                                     <a href="{{ route('calon-wisudawan.edit', $item->id) }}"
-                                        class="btn btn-sm btn-primary">Edit</a>
+                                        class="btn btn-sm btn-primary">Ubah</a>
                                     <form action="{{ route('calon-wisudawan.destroy', $item->id) }}" method="POST" class="d-inline btn-hapus">
                                         @csrf
                                         @method('DELETE')

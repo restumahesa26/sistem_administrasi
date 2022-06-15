@@ -55,7 +55,7 @@
                                 </td>
                                 <td>
                                     <a href="{{ route('data-mahasiswa.edit', $item->npm) }}"
-                                        class="btn btn-sm btn-primary">Edit</a>
+                                        class="btn btn-sm btn-primary">Ubah</a>
                                     <form action="{{ route('data-mahasiswa.destroy', $item->npm) }}" method="POST" class="d-inline btn-hapus">
                                         @csrf
                                         @method('DELETE')

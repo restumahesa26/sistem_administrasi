@@ -41,9 +41,9 @@
                             <tr>
                                 <td>{{ $item->mahasiswa->nama }}</td>
                                 <td>{{ $item->mahasiswa->npm }}</td>
-                                <td>{{ \Carbon\Carbon::parse($item->tanggal)->translatedFormat('d F Y') }}</td>
+                                <td>{{ \Carbon\Carbon::parse($item->tanggal)->translatedFormat('l, d F Y') }}</td>
                                 <td>
-                                    <a href="{{ route('seminar-proposal.edit', $item->id) }}" class="btn btn-sm btn-primary">Edit</a>
+                                    <a href="{{ route('seminar-proposal.edit', $item->id) }}" class="btn btn-sm btn-primary">Ubah</a>
                                     <form action="{{ route('seminar-proposal.destroy', $item->id) }}" method="POST" class="d-inline btn-hapus">
                                         @csrf
                                         @method('DELETE')

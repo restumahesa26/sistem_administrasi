@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ url('logo-unib.png') }}" rel="icon">
     <title>Berita Acara Seminar Hasil</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <style>
@@ -63,7 +64,7 @@
         <h5 class="text-center font-weight-bold" style="font-size: 20px; margin-top: -10px;">
             BERITA ACARA
         </h5>
-        <p class="mt-4">Pada hari ini {{ \Carbon\Carbon::parse($data_semhas->tanggal)->translatedFormat('l') }} tanggal {{ \Carbon\Carbon::parse($data_semhas->tanggal)->translatedFormat('d') }} bulan {{ \Carbon\Carbon::parse($data_semhas->tanggal)->translatedFormat('F') }} tahun {{ \Carbon\Carbon::parse($data_semhas->tanggal)->translatedFormat('Y') }} pukul {{ \Carbon\Carbon::parse($data_semhas->jam)->translatedFormat('H.i') }} WIB, telah dilaksanakan Seminar Hasil Proposal Skripsi mahasiswa :</p>
+        <p class="mt-4 text-justify">Pada hari ini {{ \Carbon\Carbon::parse($data_semhas->tanggal)->translatedFormat('l') }} tanggal {{ \Carbon\Carbon::parse($data_semhas->tanggal)->translatedFormat('d') }} bulan {{ \Carbon\Carbon::parse($data_semhas->tanggal)->translatedFormat('F') }} tahun {{ \Carbon\Carbon::parse($data_semhas->tanggal)->translatedFormat('Y') }} pukul {{ \Carbon\Carbon::parse($data_semhas->jam)->translatedFormat('H.i') }} WIB, telah dilaksanakan Seminar Hasil Proposal Skripsi mahasiswa :</p>
         <table class="table table-borderless ml-4 mt-3">
             <tbody>
                 <tr>
@@ -151,8 +152,8 @@
                 <p>Bengkulu, {{ \Carbon\Carbon::parse($data_semhas->tanggal)->translatedFormat('d F Y') }}</p>
                 <p>Mengetahui,</p>
                 <p>Ketua Tim Penguji,</p>
-                <p style="margin-top: 100px;">{{ $ketua_penguji->nama }}</p>
-                <p>NIP. {{ $ketua_penguji->nip }}</p>
+                <p style="margin-top: 100px;">{{ $mahasiswa->dosen_penguji_1->nama }}</p>
+                <p>NIP. {{ $mahasiswa->dosen_penguji_1->nip }}</p>
             </div>
         </div>
     </div>

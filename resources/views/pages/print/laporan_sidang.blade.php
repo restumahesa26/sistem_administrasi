@@ -6,10 +6,10 @@
 
 @section('content')
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Print Laporan Seminar Mahasiswa</h1>
+    <h1 class="h3 mb-0 text-gray-800">Cetak Laporan Seminar Mahasiswa</h1>
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Print Laporan Seminar Mahasiswa</li>
+        <li class="breadcrumb-item active" aria-current="page">Cetak Laporan Seminar Mahasiswa</li>
     </ol>
 </div>
 
@@ -17,7 +17,7 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-body">
-                <a href="{{ route('laporan-sidang.print') }}" class="btn btn-primary mb-3" target="_blank">Print Laporan Seminar Mahasiswa</a>
+                <a href="{{ route('laporan-sidang.print') }}" class="btn btn-primary mb-3" target="_blank">Cetak Laporan Seminar Mahasiswa</a>
                 <div class="table-responsive">
                     <table class="table align-items-center table-flush">
                         <thead class="thead-light">

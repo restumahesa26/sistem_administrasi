@@ -59,7 +59,6 @@ class PrintController extends Controller
     public function print_berita_acara_semhas(Request $request)
     {
         $npmMahasiswa = $request->npm;
-        $ketuaPenguji = $request->nip_ketua_penguji;
         $now = Carbon::now();
 
         $checkMahasiswa = Ujian::where('jenis', 'Seminar Hasil')->where('npm', $npmMahasiswa)->first();
@@ -67,10 +66,9 @@ class PrintController extends Controller
 
         if ($checkMahasiswa !== NULL && $checkMahasiswa2 !== NULL) {
             $mahasiswa = Mahasiswa::where('npm', $npmMahasiswa)->first();
-            $ketuaPenguji = Dosen::where('nip', $ketuaPenguji)->first();
 
             return view('pages.view-print.view_berita_acara_semhas', [
-                'mahasiswa' => $mahasiswa, 'ketua_penguji' => $ketuaPenguji, 'data_semhas' => $checkMahasiswa, 'now' => $now
+                'mahasiswa' => $mahasiswa, 'data_semhas' => $checkMahasiswa, 'now' => $now
             ]);
         }else {
             return redirect()->back()->withInput()->with('error', 'Mahasiswa Belum Terdaftar Di Seminar Hasil');
@@ -91,7 +89,6 @@ class PrintController extends Controller
     {
         $npmMahasiswa = $request->npm;
         $statusKelulusan = $request->status;
-        $ketuaPenguji = $request->nip_ketua_penguji;
         $now = Carbon::now();
 
         $checkMahasiswa = Ujian::where('jenis', 'Seminar Hasil')->where('npm', $npmMahasiswa)->first();
@@ -100,10 +97,9 @@ class PrintController extends Controller
 
         if ($checkMahasiswa !== NULL && $checkMahasiswa2 !== NULL && $checkMahasiswa3 !== NULL) {
             $mahasiswa = Mahasiswa::where('npm', $npmMahasiswa)->first();
-            $ketuaPenguji = Dosen::where('nip', $ketuaPenguji)->first();
 
             return view('pages.view-print.view_berita_acara_sidang_skripsi', [
-                'mahasiswa' => $mahasiswa, 'ketua_penguji' => $ketuaPenguji, 'data_sidang' => $checkMahasiswa3, 'now' => $now, 'status' => $statusKelulusan
+                'mahasiswa' => $mahasiswa, 'data_sidang' => $checkMahasiswa3, 'now' => $now, 'status' => $statusKelulusan
             ]);
         }else {
             return redirect()->back()->withInput()->with('error', 'Mahasiswa Belum Terdaftar Di Sidang Skripsi');

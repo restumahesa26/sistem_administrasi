@@ -19,7 +19,7 @@ class CreateDaftarHadirsTable extends Migration
             $table->foreign('npm')->references('npm')->on('mahasiswas')->onUpdate('cascade')->onDelete('cascade');
             $table->string('nip');
             $table->foreign('nip')->references('nip')->on('dosens')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignId('seminar_proposal_id')->references('id')->on('ujians');
+            $table->foreignId('seminar_proposal_id')->references('id')->on('ujians')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -19,12 +19,12 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap"
             aria-expanded="true" aria-controls="collapseBootstrap">
             <i class="fa fa-fw fa-database"></i>
-            <span>Main Data</span>
+            <span>Data Utama</span>
         </a>
         <div id="collapseBootstrap" class="collapse @if(Route::is('data-mahasiswa.*') || Route::is('data-dosen.*') || Route::is('data-user.*')) show @endif" aria-labelledby="headingBootstrap"
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Main Data</h6>
+                <h6 class="collapse-header">Data Utama</h6>
                 <a class="collapse-item @if(Route::is('data-mahasiswa.*')) active @endif" href="{{ route('data-mahasiswa.index') }}">Data Mahasiswa</a>
                 <a class="collapse-item @if(Route::is('data-dosen.*')) active @endif" href="{{ route('data-dosen.index') }}">Data Dosen</a>
                 <a class="collapse-item @if(Route::is('data-user.*')) active @endif" href="{{ route('data-user.index') }}">Data User</a>

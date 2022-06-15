@@ -55,7 +55,7 @@
         <ul>
           <li><a class="nav-link scrollto active" href="{{ route('home') }}">Home</a></li>
           @if (Auth::user())
-          <li><a class="nav-link scrollto active" href="{{ route('dashboard') }}">Dashboard</a></li>
+          <li><a class="nav-link scrollto" href="{{ route('dashboard') }}" style="margin-right: 10px !important">Dashboard</a></li>
           <li>
             <form method="POST" action="{{ route('logout') }}">
                 @csrf

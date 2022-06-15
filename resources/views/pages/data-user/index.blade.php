@@ -51,7 +51,7 @@
                                 <td>{{ $item->username }}</td>
                                 <td>{{ $item->email }}</td>
                                 <td>
-                                    <a href="{{ route('data-user.edit', $item->id) }}" class="btn btn-sm btn-primary">Edit</a>
+                                    <a href="{{ route('data-user.edit', $item->id) }}" class="btn btn-sm btn-primary">Ubah</a>
                                     <form action="{{ route('data-user.destroy', $item->id) }}" method="POST" class="d-inline btn-hapus">
                                         @csrf
                                         @method('DELETE')

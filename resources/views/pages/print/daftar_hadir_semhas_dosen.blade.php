@@ -6,10 +6,10 @@
 
 @section('content')
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Print Daftar Hadir Seminar Hasil Dosen</h1>
+    <h1 class="h3 mb-0 text-gray-800">Cetak Daftar Hadir Seminar Hasil Dosen</h1>
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Print Daftar Hadir Seminar Hasil Dosen</li>
+        <li class="breadcrumb-item active" aria-current="page">Cetak Daftar Hadir Seminar Hasil Dosen</li>
     </ol>
 </div>
 @if(session()->has('error'))
@@ -26,7 +26,7 @@
             <div class="card-body">
                 <form action="{{ route('daftar-hadir-seminar-hasil-dosen.print') }}" method="GET" target="_blank">
                     <div class="form-group">
-                        <label for="npm">Mahasiswa</label>
+                        <label for="npm">Nama Mahasiswa</label>
                         <select name="npm" id="npm" class="form-control select2-mahasiswa" required>
                             <option value="" hidden>-- Pilih Mahasiswa --</option>
                             @foreach ($mahasiswas as $mahasiswa)
@@ -34,10 +34,6 @@
                             </option>
                             @endforeach
                         </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="number">Jumlah Dosen</label>
-                        <input type="number" name="number" id="number" class="form-control" placeholder="Masukkan Jumlah Dosen" required>
                     </div>
                     <button type="submit" class="btn btn-primary btn-block">Cetak Daftar Hadir</button>
                 </form>

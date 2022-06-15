@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ url('logo-unib.png') }}" rel="icon">
     <title>Form Nilai Ujian Sidang Skripsi</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
         integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
@@ -226,19 +227,19 @@
         <div class="d-flex justify-content-end mt-5" style="margin-right: 70px;">
             <div class="column">
                 <p>Bengkulu, {{ \Carbon\Carbon::parse($data_sidang->tanggal)->translatedFormat('d F Y') }}</p>
-                @if ($untuk == 'Pembimbing 1')
+                @if ($untuk == 'Dosen Pembimbing 1')
                     <p>Pembimbing Utama,</p>
                     <p style="margin-top: 100px;">{{ $mahasiswa->dosen_pembimbing_1->nama }}</p>
                     <p>NIP. {{ $mahasiswa->dosen_pembimbing_1->nip }}</p>
-                @elseif ($untuk == 'Pembimbing 2')
+                @elseif ($untuk == 'Dosen Pembimbing 2')
                     <p>Pembimbing Pendamping,</p>
                     <p style="margin-top: 100px;">{{ $mahasiswa->dosen_pembimbing_2->nama }}</p>
                     <p>NIP. {{ $mahasiswa->dosen_pembimbing_2->nip }}</p>
-                @elseif ($untuk == 'Penguji 1')
+                @elseif ($untuk == 'Dosen Penguji 1')
                     <p>Penguji Utama,</p>
                     <p style="margin-top: 100px;">{{ $mahasiswa->dosen_penguji_1->nama }}</p>
                     <p>NIP. {{ $mahasiswa->dosen_penguji_1->nip }}</p>
-                @elseif ($untuk == 'Penguji 2')
+                @elseif ($untuk == 'Dosen Penguji 2')
                     <p>Penguji Pendamping,</p>
                     <p style="margin-top: 100px;">{{ $mahasiswa->dosen_penguji_2->nama }}</p>
                     <p>NIP. {{ $mahasiswa->dosen_penguji_2->nip }}</p>

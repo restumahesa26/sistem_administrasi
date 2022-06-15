@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\APIController;
 use App\Http\Controllers\CalonWisudawanController;
 use App\Http\Controllers\DaftarHadirController;
 use App\Http\Controllers\DashboardController;
@@ -92,6 +93,8 @@ Route::prefix('/')
         Route::get('/laporan-sidang-mahasiswa', [PrintController::class, 'view_laporan_sidang'])->name('laporan-sidang.view');
 
         Route::get('/laporan-sidang-mahasiswa/print', [PrintController::class, 'print_laporan_sidang'])->name('laporan-sidang.print');
+
+        Route::get('/get-nama-dosen', [APIController::class, 'dosen'])->name('dosen');
 
     });
 

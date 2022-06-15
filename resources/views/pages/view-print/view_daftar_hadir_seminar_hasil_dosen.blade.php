@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ url('logo-unib.png') }}" rel="icon">
     <title>Daftar Hadir Seminar Hasil Dosen</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <style>
@@ -22,6 +23,10 @@
 
         .table-borderless tr td {
             padding: 3px !important;
+        }
+
+        .table-bordered tr td {
+            padding: 13px !important;
         }
 
         .table-bordered th, .table-bordered td{
@@ -109,14 +114,30 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @for ($i=0; $i < $number; $i++)
-                <tr>
-                    <td class="text-center">{{ $i+1 }}.</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                @endfor
+                    <tr>
+                        <td class="text-center">1</td>
+                        <td>{{ $mahasiswa->dosen_pembimbing_1->nip }}</td>
+                        <td>{{ $mahasiswa->dosen_pembimbing_1->nama }}</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">2</td>
+                        <td>{{ $mahasiswa->dosen_pembimbing_2->nip }}</td>
+                        <td>{{ $mahasiswa->dosen_pembimbing_2->nama }}</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">3</td>
+                        <td>{{ $mahasiswa->dosen_penguji_1->nip }}</td>
+                        <td>{{ $mahasiswa->dosen_penguji_1->nama }}</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td class="text-center">4</td>
+                        <td>{{ $mahasiswa->dosen_penguji_2->nip }}</td>
+                        <td>{{ $mahasiswa->dosen_penguji_2->nama }}</td>
+                        <td></td>
+                    </tr>
                 </tbody>
             </table>
         </div>

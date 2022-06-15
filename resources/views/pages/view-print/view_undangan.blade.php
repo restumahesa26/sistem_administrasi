@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{{ url('logo-unib.png') }}" rel="icon">
     <title>Undangan Sidang Ujian Skripsi</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
         integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
@@ -135,8 +136,7 @@
                 </tr>
             </tbody>
         </table>
-        <p class="mt-4">Kami mengharapkan kehadiran Bapak/Ibu untuk menghadiri proses Ujian Skripsi mahasiswa tersebut
-            sebagai penguji pada :</p>
+        <p class="mt-4 text-justify">Kami mengharapkan kehadiran Bapak/Ibu untuk menghadiri proses Ujian Skripsi mahasiswa tersebut sebagai penguji pada :</p>
         <table class="table table-borderless ml-5 mt-3">
             <tbody>
                 <tr>
@@ -156,7 +156,7 @@
                 </tr>
             </tbody>
         </table>
-        <p class="mt-4">Kehadiran Bapak/Ibu tepat waktu sangat kami harapkan. Atas perhatian Bapak/Ibu diucapkan teima
+        <p class="mt-4 text-justify">Kehadiran Bapak/Ibu tepat waktu sangat kami harapkan. Atas perhatian Bapak/Ibu diucapkan terima
             kasih.</p>
         <div class="d-flex justify-content-end mt-5" style="margin-right: 70px;">
             <div class="column">
