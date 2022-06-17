@@ -14,7 +14,7 @@
     </ol>
 </div>
 
-<form action="{{ route('data-user.update', $item->id) }}" method="POST">
+<form action="{{ route('data-user.update', $item->id) }}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PUT')
     @if($errors->any())

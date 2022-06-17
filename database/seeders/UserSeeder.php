@@ -21,5 +21,12 @@ class UserSeeder extends Seeder
             'email' => 'mufti.restumahesa@gmail.com',
             'password' => Hash::make('password')
         ]);
+
+        User::create([
+            'nama' => 'Siti Rochika Qori',
+            'username' => 'chikaa',
+            'email' => 'chika123@gmail.com',
+            'password' => Hash::make('password')
+        ]);
     }
 }

@@ -15,13 +15,13 @@ class CreateUjiansTable extends Migration
     {
         Schema::create('ujians', function (Blueprint $table) {
             $table->id();
-            $table->string('npm');
+            $table->string('npm', 9);
             $table->foreign('npm')->references('npm')->on('mahasiswas')->onUpdate('cascade')->onDelete('cascade');
             $table->enum('jenis', ['Seminar Proposal', 'Seminar Hasil', 'Sidang Skripsi']);
             $table->date('tanggal');
             $table->time('jam');
-            $table->string('ruang');
-            $table->string('nilai')->nullable();
+            $table->string('ruang', 60);
+            $table->string('nilai', 10)->nullable();
             $table->timestamps();
         });
     }

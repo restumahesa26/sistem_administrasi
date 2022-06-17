@@ -47,8 +47,8 @@ class CalonWisudawanController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'npm' => ['required', 'string', 'max:255'],
-            'arsip' => ['required', 'string', 'max:255'],
+            'npm' => ['required', 'string', 'max:9', 'min:9'],
+            'arsip' => ['required', 'string', 'max:50'],
             'hal_pengesahan' => ['required','mimes:pdf'],
         ]);
 
@@ -111,8 +111,8 @@ class CalonWisudawanController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'npm' => ['required', 'string', 'max:255'],
-            'arsip' => ['required', 'string', 'max:255'],
+            'npm' => ['required', 'string', 'max:9', 'min:9'],
+            'arsip' => ['required', 'string', 'max:50'],
         ]);
 
         if ($request->hal_pengesahan) {

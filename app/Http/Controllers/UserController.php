@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rules;
 
 class UserController extends Controller
@@ -53,11 +54,25 @@ class UserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
+        if ($request->avatar) {
+            $request->validate([
+                'avatar' => 'required|image|mimes:jpeg,png,jpg',
+            ]);
+        }
+
+        if($request->avatar) {
+            $value = $request->file('avatar');
+            $extension = $value->extension();
+            $imageNames = uniqid('img_', microtime()) . '.' . $extension;
+            Storage::putFileAs('public/assets/user-avatar', $value, $imageNames);
+        }
+
         // memasukkan data user ke model user
         User::create([
             'nama' => $request->nama,
             'username' => $request->username,
             'email' => $request->email,
+            'avatar' => $imageNames,
             'password' => Hash::make($request->password),
         ]);
 
@@ -125,10 +140,26 @@ class UserController extends Controller
             ]);
         }
 
+        if ($request->avatar) {
+            $request->validate([
+                'avatar' => 'required|image|mimes:jpeg,png,jpg',
+            ]);
+        }
+
+        if($request->avatar) {
+            $value = $request->file('avatar');
+            $extension = $value->extension();
+            $imageNames = uniqid('img_', microtime()) . '.' . $extension;
+            Storage::putFileAs('public/assets/user-avatar', $value, $imageNames);
+        }else {
+            $imageNames = $item->avatar;
+        }
+
         // lakukan update data satu persatu
         $item->nama = $request->nama;
         $item->username = $request->username;
         $item->email = $request->email;
+        $item->avatar = $imageNames;
         if ($request->password) {
             $item->password = Hash::make($request->password);
         }

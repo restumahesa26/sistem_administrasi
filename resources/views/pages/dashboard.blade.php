@@ -80,5 +80,58 @@
             </div>
         </div>
     </div>
+    <div class="col-lg-12 col-md-12 order-1">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-12 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="text-primary">
+                            <div class="panel-heading"><b>Grafik Seminar Proposal, Seminar Hasil dan Skripsi Bulan Ini</b></div>
+                            <div class="panel-body">
+                                <canvas id="canvas" height="280" width="600"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection
+
+@push('addon-script')
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.js" charset="utf-8"></script>
+    <script>
+        var Years = ['Seminar Proposal','Seminar Hasil','Sidang Skripsi'];
+        var Labels = ['Seminar Proposal','Seminar Hasil','Sidang Skripsi'];
+        var Prices = [{{ $semproCount }},{{ $semhasCount }}, {{ $sidangCount }}];
+        $(document).ready(function(){
+            var ctx = document.getElementById("canvas").getContext('2d');
+                var myChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels:Years,
+                        datasets: [{
+                            label: "Jumlah",
+                            data: Prices,
+                            borderWidth: 1,
+                            backgroundColor : [
+                            "#5FD068", "#47B5FF", "#EC9B3B"
+                        ],
+                    }]
+                },
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero:true,
+                                    stepSize: 1
+                                }
+                            }]
+                        }
+                    }
+                });
+        });
+        </script>
+@endpush

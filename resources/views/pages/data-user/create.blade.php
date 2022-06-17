@@ -14,7 +14,7 @@
     </ol>
 </div>
 
-<form action="{{ route('data-user.store') }}" method="POST">
+<form action="{{ route('data-user.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
     @if($errors->any())
         <div class="alert alert-warning alert-dismissible" role="alert">

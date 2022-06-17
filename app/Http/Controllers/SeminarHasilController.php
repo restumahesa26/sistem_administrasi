@@ -52,10 +52,10 @@ class SeminarHasilController extends Controller
     {
         // membuat validasi
         $request->validate([
-            'npm' => ['required', 'string', 'max:255'],
+            'npm' => ['required', 'string', 'max:9', 'min:9'],
             'tanggal' => ['required', 'date'],
             'jam' => ['required'],
-            'ruang' => ['required', 'string', 'max:255'],
+            'ruang' => ['required', 'string', 'max:60'],
         ]);
 
         // membuat perkondisian apabila data mahasiswa tersebut sudah ada
@@ -124,10 +124,10 @@ class SeminarHasilController extends Controller
 
         // membuat validasi
         $request->validate([
-            'npm' => ['required', 'string', 'max:255'],
+            'npm' => ['required', 'string', 'max:9', 'min:9'],
             'tanggal' => ['required', 'date'],
             'jam' => ['required'],
-            'ruang' => ['required', 'string', 'max:255'],
+            'ruang' => ['required', 'string', 'max:60'],
         ]);
 
         // membuat perkondisian apabila data mahasiswa tersebut sudah ada

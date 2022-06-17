@@ -15,9 +15,9 @@ class CreateDaftarHadirsTable extends Migration
     {
         Schema::create('daftar_hadirs', function (Blueprint $table) {
             $table->id();
-            $table->string('npm');
+            $table->string('npm', 9);
             $table->foreign('npm')->references('npm')->on('mahasiswas')->onUpdate('cascade')->onDelete('cascade');
-            $table->string('nip');
+            $table->string('nip', 18);
             $table->foreign('nip')->references('nip')->on('dosens')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('seminar_proposal_id')->references('id')->on('ujians')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();

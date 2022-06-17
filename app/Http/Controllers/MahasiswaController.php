@@ -45,8 +45,8 @@ class MahasiswaController extends Controller
     {
         // membuat validasi
         $request->validate([
-            'npm' => ['required', 'string', 'max:255', 'unique:mahasiswas'],
-            'nama' => ['required', 'string', 'max:255'],
+            'npm' => ['required', 'string', 'max:9', 'min:9', 'unique:mahasiswas'],
+            'nama' => ['required', 'string', 'max:100'],
             'judul' => ['required', 'string', 'max:255'],
         ]);
 
@@ -106,14 +106,14 @@ class MahasiswaController extends Controller
 
         // membuat validasi untuk nama dan judul
         $request->validate([
-            'nama' => ['required', 'string', 'max:255'],
+            'nama' => ['required', 'string', 'max:100'],
             'judul' => ['required', 'string', 'max:255']
         ]);
 
         // membuat validasi tersendiri untuk npm
         if ($request->npm !== $item->npm) {
             $request->validate([
-                'npm' => ['required', 'string', 'max:255', 'unique:mahasiswas'],
+                'npm' => ['required', 'string', 'max:9', 'min:9', 'unique:mahasiswas'],
             ]);
         }
 

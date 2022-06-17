@@ -44,9 +44,9 @@ class DosenController extends Controller
     {
         // membuat validasi
         $request->validate([
-            'nip' => ['required', 'string', 'max:255', 'unique:dosens'],
-            'nama' => ['required', 'string', 'max:255'],
-            'program_studi' => ['required', 'string', 'max:255'],
+            'nip' => ['required', 'string', 'max:18', 'unique:dosens'],
+            'nama' => ['required', 'string', 'max:100'],
+            'program_studi' => ['required', 'string', 'max:50'],
         ]);
 
         // memasukkan data mahasiswa ke model dosen

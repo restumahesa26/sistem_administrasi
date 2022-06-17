@@ -15,10 +15,10 @@ class CreateCalonWisudawansTable extends Migration
     {
         Schema::create('calon_wisudawans', function (Blueprint $table) {
             $table->id();
-            $table->string('npm');
+            $table->string('npm', 9);
             $table->foreign('npm')->references('npm')->on('mahasiswas')->onUpdate('cascade')->onDelete('cascade');
-            $table->string('arsip');
-            $table->string('hal_pengesahan');
+            $table->string('arsip', 50);
+            $table->string('hal_pengesahan', 50);
             $table->timestamps();
         });
     }

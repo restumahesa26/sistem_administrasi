@@ -39,7 +39,7 @@ class DaftarHadirController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'npm' => ['required', 'string', 'max:255']
+            'npm' => ['required', 'string', 'max:9', 'min:9']
         ]);
 
         $dosen = array();

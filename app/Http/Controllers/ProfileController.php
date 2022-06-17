@@ -26,14 +26,14 @@ class ProfileController extends Controller
     {
         // membuat validasi untuk nama, username, dan nip
         $request->validate([
-            'nama' => ['required', 'string', 'max:255'],
-            'username' => ['required', 'string', 'max:255'],
+            'nama' => ['required', 'string', 'max:100'],
+            'username' => ['required', 'string', 'max:50'],
         ]);
 
         // membuat validasi untuk email
         if ($request->email !== Auth::user()->email) {
             $request->validate([
-                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'email' => ['required', 'string', 'email', 'max:50', 'unique:users'],
             ]);
         }
 
