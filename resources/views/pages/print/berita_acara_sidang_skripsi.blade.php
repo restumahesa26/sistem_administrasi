@@ -9,7 +9,7 @@
     <h1 class="h3 mb-0 text-gray-800">Cetak Berita Acara Siang Skripsi</h1>
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Cetak Berita Acara Siang Skripsi</li>
+        <li class="breadcrumb-item active" aria-current="page">Cetak Berita Acara Sidang Skripsi</li>
     </ol>
 </div>
 
