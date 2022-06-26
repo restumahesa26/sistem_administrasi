@@ -31,7 +31,7 @@ class CalonWisudawanController extends Controller
      */
     public function create()
     {
-        $items = Mahasiswa::all();
+        $items = Mahasiswa::join('ujians AS ujian', 'ujian.npm', '=', 'mahasiswas.npm')->where('ujian.jenis', 'Sidang Skripsi')->get();
 
         return view('pages.calon_wisudawan.create', [
             'items' => $items
@@ -94,7 +94,7 @@ class CalonWisudawanController extends Controller
     public function edit($id)
     {
         $item = CalonWisudawan::findOrFail($id);
-        $items = Mahasiswa::all();
+        $items = Mahasiswa::join('ujians AS ujian', 'ujian.npm', '=', 'mahasiswas.npm')->where('ujian.jenis', 'Sidang Skripsi')->get();
 
         return view('pages.calon_wisudawan.edit', [
             'item' => $item, 'items' => $items

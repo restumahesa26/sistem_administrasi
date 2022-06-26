@@ -276,7 +276,8 @@ class PrintController extends Controller
 
     public function view_laporan_sidang()
     {
-        $items = Mahasiswa::all();
+        $items = Mahasiswa::join('ujians AS ujian', 'ujian.npm', '=', 'mahasiswas.npm')
+            ->where('ujian.jenis', 'Seminar Proposal')->get();
 
         return view('pages.print.laporan_sidang', [
             'items' => $items
@@ -285,10 +286,36 @@ class PrintController extends Controller
 
     public function print_laporan_sidang()
     {
-        $items = Mahasiswa::all();
+        $items = Mahasiswa::join('ujians AS ujian', 'ujian.npm', '=', 'mahasiswas.npm')
+        ->where('ujian.jenis', 'Seminar Proposal')->get();
 
         return view('pages.view-print.view_laporan_sidang', [
             'items' => $items
         ]);
+    }
+
+    public function print_laporan_sidang_bulan(Request $request)
+    {
+        if ($request->jenis_laporan == 'sempro') {
+            $items = Mahasiswa::join('ujians AS ujian', 'ujian.npm', '=', 'mahasiswas.npm')
+                ->where('ujian.jenis', 'Seminar Proposal')->whereMonth('ujian.tanggal', '>=', $request->bulan_awal)->whereMonth('ujian.tanggal', '<=', $request->bulan_akhir)->get();
+            $jenis = "Seminar Proposal";
+        }elseif ($request->jenis_laporan == 'semhas') {
+            $items = Mahasiswa::join('ujians AS ujian', 'ujian.npm', '=', 'mahasiswas.npm')
+                ->where('ujian.jenis', 'Seminar Hasil')->whereMonth('ujian.tanggal', '>=', $request->bulan_awal)->whereMonth('ujian.tanggal', '<=', $request->bulan_akhir)->get();
+            $jenis = "Seminar Hasil";
+        }elseif ($request->jenis_laporan == 'sidang') {
+            $items = Mahasiswa::join('ujians AS ujian', 'ujian.npm', '=', 'mahasiswas.npm')
+                ->where('ujian.jenis', 'Sidang Skripsi')->whereMonth('ujian.tanggal', '>=', $request->bulan_awal)->whereMonth('ujian.tanggal', '<=', $request->bulan_akhir)->get();
+            $jenis = "Sidang Skripsi";
+        }
+
+        if ($items->count() < 1) {
+            return redirect()->back()->with('error', 'Data Kosong');
+        }else {
+            return view('pages.view-print.view_laporan_sidang_bulan', [
+                'items' => $items, 'jenis' => $jenis, 'bulanAwal' => $request->bulan_awal, 'bulanAkhir' => $request->bulan_akhir
+            ]);
+        }
     }
 }

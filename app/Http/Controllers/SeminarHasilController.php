@@ -34,7 +34,7 @@ class SeminarHasilController extends Controller
     public function create()
     {
         // ambil semua data mahasiswa
-        $items = Mahasiswa::all();
+        $items = Mahasiswa::join('ujians AS ujian', 'ujian.npm', '=', 'mahasiswas.npm')->where('ujian.jenis', 'Seminar Proposal')->get();
 
         // tampilkan ke halaman create seminar hasil
         return view('pages.seminar-hasil.create', [
@@ -102,7 +102,7 @@ class SeminarHasilController extends Controller
         $item = Ujian::findOrFail($id);
 
         // ambil semua data mahasiswa
-        $mahasiswa = Mahasiswa::all();
+        $mahasiswa = Mahasiswa::join('ujians AS ujian', 'ujian.npm', '=', 'mahasiswas.npm')->where('ujian.jenis', 'Seminar Proposal')->get();
 
         // tampilkan data seminar proposal ke halaman edit seminar hasil
         return view('pages.seminar-hasil.edit', [

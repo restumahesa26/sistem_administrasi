@@ -94,6 +94,8 @@ Route::prefix('/')
 
         Route::get('/laporan-sidang-mahasiswa/print', [PrintController::class, 'print_laporan_sidang'])->name('laporan-sidang.print');
 
+        Route::get('/laporan-sidang-mahasiswa-per-bulan/print', [PrintController::class, 'print_laporan_sidang_bulan'])->name('laporan-sidang-bulan.print');
+
         Route::get('/get-nama-dosen', [APIController::class, 'dosen'])->name('dosen');
 
     });
